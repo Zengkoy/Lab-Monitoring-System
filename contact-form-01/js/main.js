@@ -6,24 +6,22 @@
   // Form
 	var contactForm = function() {
 		if ($('#contactForm').length > 0 ) {
-			$( "#contactForm" ).validate( {
-				rules: {
-					name: "required",
-					subject: "required",
-					email: {
-						required: true,
-						email: true
-					},
-					message: {
+			$( "#contactForm" ).validate( 
+			{
+				rules: 
+				{
+					lab: "required",
+					pc: "required",
+					issue: {
 						required: true,
 						minlength: 5
 					}
 				},
-				messages: {
-					name: "Please enter your name",
-					subject: "Please enter your subject",
-					email: "Please enter a valid email address",
-					message: "Please enter a message"
+				messages: 
+				{
+					lab: "Please enter lab number",
+					pc: "Please enter PC Number",
+					issue: "Please describe the issue"
 				},
 				/* submit via ajax */
 				
@@ -42,11 +40,11 @@
 				      success: function(msg) {
 		               if (msg == 'OK') {
 		               	$('#form-message-warning').hide();
-				            setTimeout(function(){
+				        setTimeout(function(){
 		               		$('#contactForm').fadeIn();
 		               	}, 1000);
-				            setTimeout(function(){
-				               $('#form-message-success').fadeIn();   
+				        setTimeout(function(){
+				            $('#form-message-success').fadeIn();   
 		               	}, 1400);
 
 		               	setTimeout(function(){
@@ -74,7 +72,7 @@
 				         $('#form-message-warning').fadeIn();
 				         $submit.css('display', 'none');
 				      }
-			      });    		
+			      });
 		  		} // end submitHandler
 
 			});
