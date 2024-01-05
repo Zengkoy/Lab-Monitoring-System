@@ -3,17 +3,21 @@ $(function() {
         rules: {
             lab: {
                 required: true,
-                number: true
+                number: true,
+                min: 1,
+                max: 2
             },
             pc: {
                 required: true,
-                number: true
+                number: true,
+                min: 1,
+                max: 20
             },
             issue: "required"
         },
         messages: {
-            lab: "Please enter Lab number",
-            pc: "Please enter computer number",
+            lab: "Please enter proper Lab number",
+            pc: "Please enter proper computer number",
             issue: "Please describe the issue"
         },
 
