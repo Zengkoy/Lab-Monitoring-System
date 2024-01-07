@@ -1,14 +1,30 @@
 window.onload = function() {
-    $("#2ndtable").hide();
-    const parser = new DOMParser;
     $.ajax({
-        url: "../../php/submitTicket.php",
+        url: "../../php/listReports.php",
 
-        success: function(table) {
-            $("#reportsTable").html(parser.parseFromString(table, 'text/html').firstChild.body);
+        success: function() {
+            $("#reportsTable").load("../../php/table.txt");
         },
-        error: function() {
-            $("#reportsTable").innerHTML = "<p>something went wrong</p>";
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
+};
+
+function resolve() {
+    $.ajax({
+        url: "../php/resolveIssue.php",
+        type: "POST",
+        data: $("#hidForm").serialize(),
+
+        success: function(msg) {
+            if(msg == "OK") {
+                console.log(msg);
+            }
+            else
+            {
+                console.log(msg);
+            }
         }
     });
 }

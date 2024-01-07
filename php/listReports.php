@@ -3,6 +3,7 @@
 
     $query = mysqli_query($conn,"SELECT * FROM reports;");
     $row = array();
+    $table = "";
 
     while($r = mysqli_fetch_assoc($query))
         {
@@ -11,38 +12,63 @@
     
     if(!empty($row))
     {
-        $table = "<table class='table align-items-center mb-0'>
-        <thead>
-          <tr>
-            <th class='text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Report ID</th>
-            <th class='text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2'>Computer ID</th>
-            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Issue</th>
-            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Submitted</th>
-            <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Status</th>
-            <th class='text-secondary opacity-7'></th>
-          </tr>
-        </thead>
-        <tbody>";
         foreach($row as $r)
         {
+            $reportId = $r['report_id'];
+            $lab = substr($r['computer_id'], 0, 1);
+            $pc = substr($r['computer_id'], 1);
+            $desc = $r['issue'];
+            $date = $r['date'];
+            $status = $r['status'];
+
             $table .= "<tr>";
 
-            foreach($r as $c)
+            $table .= "<td class='align-middle text-center'>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$reportId</span></td>";
+            
+            $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$lab</span></td>";
+            $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$pc</span></td>";
+            
+            $table .= "<td class='align-middle text-center desc'>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span></td>";
+
+            $table .= "<td class='align-middle text-center'>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$date</span></td>";
+
+            if($status == "pending")
             {
-                $table .= "<td class='align-middle text-center'>
-                <span class='text-secondary text-xs font-weight-bold'>$c</span>
+                $table .= "<td class='align-middle text-center'>";
+                $table .= "<span class='badge badge-sm bg-gradient-secondary'>$status</span></td>";
+                $table .= "<td class='align-middle'>
+                    <form id='report-id$reportId' method='POST' action='../php/resolveIssue.php'>
+                        <input type='text' name='key' class='hidden' value='$reportId' />
+                        <input class='btn btn-success' type='submit' onclick='resolve()' value='Resolve'/>
+                    </form>
+                    </td>";
+            }
+            else if($status == "resolved")
+            {
+                $table .= "<td class='align-middle text-center'>";
+                $table .= "<span class='badge badge-sm bg-gradient-success'>$status</span></td>";
+                $table .= "<td class='align-middle'>
+                <form id='report-id$reportId' method='POST' action='../php/unresolveIssue.php'>
+                    <input type='text' name='key' class='hidden' value='$reportId' />
+                    <input class='btn btn-secondary' type='submit' onclick='resolve()' value='Unresolve'/>
+                </form>
                 </td>";
             }
             $table .= "<td class='align-middle'>
-            <a href='javascript:;' class='text-secondary font-weight-bold text-xs' data-toggle='tooltip' data-original-title='Edit user'>
-              Edit
-            </a>
-            </td>";
+                <form id='report-id$reportId' method='POST' action='../php/deleteIssue.php'>
+                    <input type='text' name='key' class='hidden' value='$reportId' />
+                    <input class='btn btn-danger' type='submit' onclick='resolve()' value='delete'/>
+                </form>
+                </td>";
+
+            
             $table .= "</tr>";
         }
-
-        $table .= "</tbody>
-        </table>";
-        echo $table;
+        $file = fopen("table.txt", "w");
+        fwrite($file, $table);
+        fclose($file);
     }
 ?>
