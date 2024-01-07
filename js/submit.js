@@ -27,7 +27,7 @@ $(function() {
 
             $.ajax({
                 type: "POST",
-                url: "php/sendEmail.php",
+                url: "php/submitTicket.php",
                 data: $(form).serialize(),
 
                 beforeSend: function() { 
@@ -36,7 +36,7 @@ $(function() {
 
                 success: function(msg) {
                     if (msg == "OK") {
-                        $("#orm-message-warning").hide();
+                        $("#form-message-warning").hide();
                         setTimeout(function(){
                             $("#contactForm").fadeIn();
                         }, 1000);
