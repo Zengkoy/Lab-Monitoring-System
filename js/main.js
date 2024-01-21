@@ -2,7 +2,22 @@
 
 	"use strict";
 
+	$.ajax({
+        url: "../php/loginCheck.php",
 
+        success: function(msg) {
+            if(msg == "OK") {
+				contactForm();
+            }
+            else {
+                
+                window.location.replace('../');
+            }
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
   // Form
 	var contactForm = function() {
 		if ($('#contactForm').length > 0 ) {
@@ -78,6 +93,5 @@
 			});
 		}
 	};
-	contactForm();
 
 })(jQuery);

@@ -37,7 +37,7 @@
                             window.location.replace('../');
 			               
 			            } else {
-			               $('#fail').html("fail");
+			               $('#fail').html(msg);
 				            // $('#form-message-warning').fadeIn();
 				            $submit.css('display', 'none');
 			            }
