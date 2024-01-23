@@ -7,7 +7,7 @@ window.onload = function() {
                 generate_table();
             }
             else {
-                window.location.replace('pages/sign-in.html');
+                window.location.replace('../');
             }
         },
         error: function(errorThrown){
@@ -34,7 +34,7 @@ function logout() {
         url: "../../php/logout.php",
 
         success: function() {
-            window.location.replace('pages/sign-in.html');
+            window.location.replace('../');
         },
         error: function(errorThrown){
             $("#error").html(errorThrown);
@@ -44,7 +44,7 @@ function logout() {
 
 function resolve() {
     $.ajax({
-        url: "../php/resolveIssue.php",
+        url: "../../php/resolveIssue.php",
         type: "POST",
         data: $("#hidForm").serialize(),
 

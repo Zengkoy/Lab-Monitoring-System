@@ -9,7 +9,7 @@
         $query = "UPDATE reports SET status='resolved' WHERE report_id='$id';";
         if(mysqli_query($conn, $query))
         {
-            header("Location: ../admin/");
+            header("Location: ../admin/pages/table.html");
             exit;
         }
         else

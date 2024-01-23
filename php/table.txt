@@ -1,31 +1,31 @@
 <tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>3</span></td><td><span class='text-secondary text-xs font-weight-bold'>2</span></td><td><span class='text-secondary text-xs font-weight-bold'>12</span></td><td class='align-middle text-center desc'><span class='text-secondary text-xs font-weight-bold'>sira</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-01-07</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='align-middle'>
-                <form id='report-id3' method='POST' action='../php/unresolveIssue.php'>
+                <form id='report-id3' method='POST' action='../../php/unresolveIssue.php'>
                     <input type='text' name='key' class='hidden' value='3' />
                     <input class='btn btn-secondary' type='submit' onclick='resolve()' value='Unresolve'/>
                 </form>
                 </td><td class='align-middle'>
-                <form id='report-id3' method='POST' action='../php/deleteIssue.php'>
+                <form id='report-id3' method='POST' action='../../php/deleteIssue.php'>
                     <input type='text' name='key' class='hidden' value='3' />
                     <input class='btn btn-danger' type='submit' onclick='resolve()' value='delete'/>
                 </form>
                 </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>4</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td><span class='text-secondary text-xs font-weight-bold'>14</span></td><td class='align-middle text-center desc'><span class='text-secondary text-xs font-weight-bold'>gkrrea lasffaokf knekeaeowkaf nwrfknflfeea
-falsfaer lak efenktneklaa</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-01-07</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='align-middle'>
-                <form id='report-id4' method='POST' action='../php/unresolveIssue.php'>
-                    <input type='text' name='key' class='hidden' value='4' />
-                    <input class='btn btn-secondary' type='submit' onclick='resolve()' value='Unresolve'/>
-                </form>
-                </td><td class='align-middle'>
-                <form id='report-id4' method='POST' action='../php/deleteIssue.php'>
+falsfaer lak efenktneklaa</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-01-07</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-secondary'>pending</span></td><td class='align-middle'>
+                    <form id='report-id4' method='POST' action='../../php/resolveIssue.php'>
+                        <input type='text' name='key' class='hidden' value='4' />
+                        <input class='btn btn-success' type='submit' onclick='resolve()' value='Resolve'/>
+                    </form>
+                    </td><td class='align-middle'>
+                <form id='report-id4' method='POST' action='../../php/deleteIssue.php'>
                     <input type='text' name='key' class='hidden' value='4' />
                     <input class='btn btn-danger' type='submit' onclick='resolve()' value='delete'/>
                 </form>
-                </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>7</span></td><td><span class='text-secondary text-xs font-weight-bold'>2</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td class='align-middle text-center desc'><span class='text-secondary text-xs font-weight-bold'>Walang keyboard</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-01-15</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='align-middle'>
-                <form id='report-id7' method='POST' action='../php/unresolveIssue.php'>
-                    <input type='text' name='key' class='hidden' value='7' />
-                    <input class='btn btn-secondary' type='submit' onclick='resolve()' value='Unresolve'/>
-                </form>
-                </td><td class='align-middle'>
-                <form id='report-id7' method='POST' action='../php/deleteIssue.php'>
+                </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>7</span></td><td><span class='text-secondary text-xs font-weight-bold'>2</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td class='align-middle text-center desc'><span class='text-secondary text-xs font-weight-bold'>Walang keyboard</span></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-01-15</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-secondary'>pending</span></td><td class='align-middle'>
+                    <form id='report-id7' method='POST' action='../../php/resolveIssue.php'>
+                        <input type='text' name='key' class='hidden' value='7' />
+                        <input class='btn btn-success' type='submit' onclick='resolve()' value='Resolve'/>
+                    </form>
+                    </td><td class='align-middle'>
+                <form id='report-id7' method='POST' action='../../php/deleteIssue.php'>
                     <input type='text' name='key' class='hidden' value='7' />
                     <input class='btn btn-danger' type='submit' onclick='resolve()' value='delete'/>
                 </form>

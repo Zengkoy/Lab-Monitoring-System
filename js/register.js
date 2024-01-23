@@ -2,11 +2,15 @@
 
 	"use strict";
 	$.ajax({
-        url: "../php/loginCheck.php",
+        url: "../../php/loginCheck.php",
 
         success: function(msg) {
-            if(msg == "OK") { window.location.replace('pages/table.html'); }
-			else { loginForm(); }
+            if(msg == "OK") {
+                registerForm();
+            }
+            else {
+                window.location.replace('../');
+            }
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -14,19 +18,30 @@
     });
 
   // Form
-	var loginForm = function() {
-		if ($('#login-form').length > 0 ) {
-			$( "#login-form" ).validate( 
+	var registerForm = function() {
+		if ($('#register-form').length > 0 ) {
+			$( "#register-form" ).validate( 
 			{
 				rules: 
 				{
 					username: "required",
-					password: "required"
+					password: {
+                        required: true,
+                        minlength: 8
+                    },
+                    confirmpassword: {
+                        required: true,
+                        equalTo: "#password"
+                    }
 				},
 				messages: 
 				{
 					username: "Please enter username",
-					password: "Please enter password"
+					password: "Please enter password with at least 8 characters",
+                    confirmpassword: {
+                        required: "Please confirm password",
+                        equalTo: "Password does not match"
+                    }
 				},
 				/* submit via ajax */
 				
@@ -36,7 +51,7 @@
 
 					$.ajax({   	
                         type: "POST",
-                        url: "../php/login.php",
+                        url: "../../php/register.php",
                         data: $(form).serialize(),
 
                         beforeSend: function() { 
