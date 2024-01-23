@@ -7,8 +7,7 @@ window.onload = function() {
                 generate_table();
             }
             else {
-                
-                window.location.replace('pages/sign-in.html');;
+                window.location.replace('pages/sign-in.html');
             }
         },
         error: function(errorThrown){
@@ -26,6 +25,19 @@ function generate_table() {
         },
         error: function(errorThrown){
             alert(errorThrown);
+        }
+    });
+}
+
+function logout() {
+    $.ajax({
+        url: "../../php/logout.php",
+
+        success: function() {
+            window.location.replace('pages/sign-in.html');
+        },
+        error: function(errorThrown){
+            $("#error").html(errorThrown);
         }
     });
 }

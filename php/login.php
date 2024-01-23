@@ -1,6 +1,7 @@
 <?php 
     @include "config.php";
 
+    session_start();
     if($_POST)
     {
         $userid = $_POST["username"];

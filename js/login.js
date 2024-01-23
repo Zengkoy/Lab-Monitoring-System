@@ -1,7 +1,21 @@
 (function($) {
 
 	"use strict";
+	$.ajax({
+        url: "../../php/loginCheck.php",
 
+        success: function(msg) {
+            if(msg == "OK") {
+                window.location.replace('../');
+            }
+			else {
+				loginForm();
+			}
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
 
   // Form
 	var loginForm = function() {
@@ -53,6 +67,5 @@
 			});
 		}
 	};
-	loginForm();
 
 })(jQuery);
