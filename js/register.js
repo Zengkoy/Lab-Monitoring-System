@@ -59,12 +59,10 @@
                         },
                         success: function(msg) {
                         if (msg == 'OK') {
-                            window.location.replace('pages/table.html');
-			               
-			            } else {
-			               $('#fail').html(msg);
-				            // $('#form-message-warning').fadeIn();
-				            $submit.css('display', 'none');
+                            $("#result").html("Success!")
+			            } 
+                        else {
+			                $("#result").html(msg);
 			            }
 				        },
 				        error: function() {

@@ -4,27 +4,45 @@
     session_start();
     if($_POST)
     {
-        $userid = $_POST["username"];
+        $username = $_POST["username"];
         $password = $_POST["password"];
-        $cookie_value = NULL;
+        $date = date("Y-m-d");
+        $cookie_value = "";
 
-        if(isset($_POST["rememberMe"]))
+        $msg = "";
+        
+        $select = "SELECT * FROM admin WHERE username = '$username' && password = '$password';";
+        $result = mysqli_query($conn, $select);
+
+        if(mysqli_num_rows($result) > 0)
         {
-            $login_string = hash('sha512', $userid . $_SERVER['HTTP_USER_AGENT'] . time());
-            $cookie_name  = 'user_str_session';  
-            $cookie_value = $login_string;
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 1), "/");
+            if(isset($_POST["rememberMe"]))
+            {
+                $login_string = hash('sha512', $username . $_SERVER['HTTP_USER_AGENT'] . time());
+                $cookie_name  = 'user_str_session';  
+                $cookie_value = $login_string;
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 1), "/");
+            }
+
+            $insert = "INSERT INTO login_log VALUES('$username', '$cookie_value', '$date');";
+
+            if(mysqli_query($conn, $insert)){
+                $row = mysqli_fetch_array($result);
+                $_SESSION['id'] = $row['admin_id'];
+                $msg = "OK";
+            }
+            else{
+                $msg = mysqli_error($conn);
+            }
             
-            $query = "INSERT INTO login_log VALUES('$userid', '$cookie_value')";
-            if(mysqli_query($conn, $query))
-            {
-                $_SESSION["id"] = $userid;
-                echo "OK";
-            }
-            else
-            {
-                echo mysqli_error($conn);
-            }
+            echo $msg;
         }
+        else
+        {
+            echo "Incorrect username or password";
+        }
+
+        /* $_SESSION["id"] = 1;
+        echo "OK"; */
     }
 ?>
