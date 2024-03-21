@@ -42,7 +42,7 @@
                 $table .= "<td class='align-middle'>
                     <form id='report-id$reportId' method='POST' action='../../php/resolveIssue.php'>
                         <input type='text' name='key' class='hidden' value='$reportId' />
-                        <input class='btn btn-success' type='submit' onclick='resolve()' value='Resolve'/>
+                        <input class='btn btn-success btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='Resolve'/>
                     </form>
                     </td>";
             }
@@ -53,14 +53,14 @@
                 $table .= "<td class='align-middle'>
                 <form id='report-id$reportId' method='POST' action='../../php/unresolveIssue.php'>
                     <input type='text' name='key' class='hidden' value='$reportId' />
-                    <input class='btn btn-secondary' type='submit' onclick='resolve()' value='Unresolve'/>
+                    <input class='btn btn-secondary btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='Unresolve'/>
                 </form>
                 </td>";
             }
             $table .= "<td class='align-middle'>
                 <form id='report-id$reportId' method='POST' action='../../php/deleteIssue.php'>
                     <input type='text' name='key' class='hidden' value='$reportId' />
-                    <input class='btn btn-danger' type='submit' onclick='resolve()' value='delete'/>
+                    <input class='btn btn-danger btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='delete'/>
                 </form>
                 </td>";
 

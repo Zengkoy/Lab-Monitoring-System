@@ -3,12 +3,12 @@ window.onload = function() {
         url: "../../php/loginCheck.php",
 
         success: function(msg) {
-            if(msg == "OK") {
+            /* if(msg == "OK") {
                 generate_report_table();
             }
             else {
                 window.location.replace('../');
-            }
+            } */
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -16,7 +16,7 @@ window.onload = function() {
     });
 };
 
-function generate_report_table() {
+function generate_computer_table() {
     $.ajax({
         url: "../../php/listReports.php",
 
@@ -29,6 +29,16 @@ function generate_report_table() {
     });
 }
 
+function show_computer_form() {
+    $("#add-pc-form").toggle();
+    if($("#show-hide-btn").html() == "Add Computer") {
+        $("#show-hide-btn").html("Cancel");
+    }
+    else {
+        $("#show-hide-btn").html("Add Computer");
+    }
+}
+
 function logout() {
     $.ajax({
         url: "../../php/logout.php",
@@ -38,24 +48,6 @@ function logout() {
         },
         error: function(errorThrown){
             $("#error").html(errorThrown);
-        }
-    });
-}
-
-function resolve() {
-    $.ajax({
-        url: "../../php/resolveIssue.php",
-        type: "POST",
-        data: $("#hidForm").serialize(),
-
-        success: function(msg) {
-            if(msg == "OK") {
-                console.log(msg);
-            }
-            else
-            {
-                console.log(msg);
-            }
         }
     });
 }
