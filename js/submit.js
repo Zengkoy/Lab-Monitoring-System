@@ -13,12 +13,14 @@ $(function() {
                 min: 1,
                 max: 20
             },
-            issue: "required"
+            issue: "required",
+            usability: "required"
         },
         messages: {
             lab: "Please enter proper Lab number",
             pc: "Please enter proper computer number",
-            issue: "Please describe the issue"
+            issue: "Please describe the issue",
+            usability: "Please confirm PC status"
         },
 
         submitHandler: function(form) {

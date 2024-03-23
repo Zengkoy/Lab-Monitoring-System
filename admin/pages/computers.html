@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    ACLC Computer Lab
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -44,7 +44,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html " target="_blank">
         <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+        <span class="ms-1 font-weight-bold">ACLC Computer Lab</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -280,13 +280,13 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="https://www.creative-tim.com/builder?ref=navbar-soft-ui-dashboard">Online Builder</a>
+              <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="sign-up.html">Add an Admin</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <button type="button" onclick="logout()" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
+                <span class="d-sm-inline d-none">Logout</span>
+              </button>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -612,38 +612,53 @@
               </div>
             </div>
             <div class="card-body pt-4 p-3">
-                <form id="add-pc-form" method="post" class="col-md-5" style="display: none;">
-                    <div class="row">
-                        <div class="form-group col">
-                            <label for="lab">Lab</label>
-                            <select name="lab" id="lab" class="form-select-sm col-md-10">
-                                <option selected></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                        <div class="form-group col">
-                            <label for="pc-number">PC Number</label>
-                            <input type="text" name="pc-number" id="pc-number" class="form-select-sm col-md-10">
-                            </input>
-                        </div>
-                        <div class="col text-end mt-4">
-                            <input type="submit" name="submit" id="submit" class="btn btn-success btn-sm">
-                        </div>
-                    </div>
+                <form id="add-pc-form" method="post" class="col-md-8" style="display: none;">
+                  <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Add Computer</h6>
+                  <div id="success-message" class="p-1 alert alert-success" style="display: none;">
+                    <strong>Success!</strong> <span>Computer added to database.</span>
+                  </div>
+                  <div id="error-message" class="p-1 alert alert-danger" style="display: none;">
+                    <strong>Error!</strong> <span></span>
+                  </div>
+                  <div class="row">
+                      <div class="form-group col">
+                          <label for="lab">Lab</label>
+                          <select name="lab" id="lab" class="form-select-sm col-md-10">
+                              <option selected></option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                          </select>
+                      </div>
+                      <div class="form-group col">
+                          <label for="pcNumber">PC Number</label>
+                          <input type="text" name="pcNumber" id="pcNumber" class="form-select-sm col-md-10">
+                          </input>
+                      </div>
+                      <div class="col text-end mt-4">
+                        <button onclick="add_computer()" name="add" id="add" class="btn btn-success btn-sm">Add</button>
+                      </div>
+                  </div>
                 </form>
-              <!-- <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6> -->
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                <form id="lab-select" class="row">
+                  <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Lab</h6>
+                  <select name="lab-select-dd" id="lab-select-dd" class="form-select-sm w-25" onchange="generate_computer_table()">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </form>
+              <ul id="computer-list" class="list-group">
+                <!-- <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex align-items-center">
                     <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button>
                     <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Netflix</h6>
-                      <span class="text-xs">27 March 2020, at 12:30 PM</span>
+                      <h6 class="mb-1 text-dark text-m">Netflix</h6>
+                      
                     </div>
                   </div>
-                  <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                    - $ 2,500
+                  <div class="d-flex align-items-center text-sm font-weight-bold">
+                    <button class="p-0 btn btn-link text-info">View</button>
+                    <p>|</p>
+                    <button class="p-0 btn btn-link text-danger">Delete</button>
                   </div>
                 </li>
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
@@ -708,13 +723,13 @@
                   <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
                     Pending
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
         </div>
       </div>
-      <footer class="footer pt-3  ">
+     <!--  <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
@@ -745,7 +760,7 @@
             </div>
           </div>
         </div>
-      </footer>
+      </footer> -->
     </div>
   </main>
   <div class="fixed-plugin">
@@ -820,6 +835,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/jquery.validate.min.js"></script>
   <script src="../assets/js/computers.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

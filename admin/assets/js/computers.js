@@ -3,12 +3,12 @@ window.onload = function() {
         url: "../../php/loginCheck.php",
 
         success: function(msg) {
-            /* if(msg == "OK") {
-                generate_report_table();
+            if(msg == "OK") {
+                generate_computer_table();
             }
             else {
                 window.location.replace('../');
-            } */
+            }
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -18,10 +18,12 @@ window.onload = function() {
 
 function generate_computer_table() {
     $.ajax({
-        url: "../../php/listReports.php",
+        type: "POST",
+        url: "../../php/listComputers.php",
+        data: $("#lab-select").serialize(),
 
-        success: function() {
-            $("#reportsTable").load("../../php/table.txt");
+        success: function(msg) {
+            $("#computer-list").load("../../php/comp-table.txt");
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -37,6 +39,45 @@ function show_computer_form() {
     else {
         $("#show-hide-btn").html("Add Computer");
     }
+}
+
+function add_computer() {
+    $("#add-pc-form").validate({
+        rules: {
+            lab: "required",
+            pcNumber: "required"
+        },
+        messages: {
+            lab: "Choose Lab Number",
+            pcNumber: "Enter PC Number"
+        },
+
+        submitHandler: function(form) {
+            $.ajax({
+                type: "POST",
+                url: "../../php/addComputer.php",
+                data: $(form).serialize(),
+
+                success: function(msg) {
+                    if (msg == 'OK') {
+                        $("#success-message").show();
+                        setTimeout(function() {$("#success-message").fadeOut()}, 3000);
+                        generate_computer_table();
+                    }
+                    else {
+                        $("#error-message").show();
+                        $("#error-message > span").html(msg);
+                        setTimeout(function() {$("#error-message").fadeOut()}, 3000);
+                    }
+                },
+                error: function() {
+                    $("#error-message").show();
+                    $("#error-message > span").html("Something went wrong.");
+                    setTimeout(function() {$("#error-message").fadeOut()}, 3000);
+                }
+            })
+        }
+    })
 }
 
 function logout() {

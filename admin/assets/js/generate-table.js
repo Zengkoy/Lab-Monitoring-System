@@ -42,19 +42,67 @@ function logout() {
     });
 }
 
-function resolve() {
+function resolve(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
     $.ajax({
         url: "../../php/resolveIssue.php",
         type: "POST",
-        data: $("#hidForm").serialize(),
+        data: values,
 
         success: function(msg) {
             if(msg == "OK") {
-                console.log(msg);
+                generate_report_table();
             }
             else
             {
-                console.log(msg);
+                console.log(form);
+            }
+        }
+    });
+}
+
+function unresolve(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
+    $.ajax({
+        url: "../../php/unresolveIssue.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            if(msg == "OK") {
+                generate_report_table();
+            }
+            else
+            {
+                console.log(form);
+            }
+        }
+    });
+}
+
+function delete_report(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
+    $.ajax({
+        url: "../../php/deleteIssue.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            if(msg == "OK") {
+                generate_report_table();
+            }
+            else
+            {
+                console.log(form);
             }
         }
     });

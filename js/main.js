@@ -14,13 +14,15 @@
 					issue: {
 						required: true,
 						minlength: 5
-					}
+					},
+					usability: "required"
 				},
 				messages: 
 				{
 					lab: "Please enter lab number",
 					pc: "Please enter PC Number",
-					issue: "Please describe the issue"
+					issue: "Please describe the issue",
+					usability: "Please confirm computer status"
 				},
 				/* submit via ajax */
 				

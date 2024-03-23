@@ -15,8 +15,9 @@
         foreach($row as $r)
         {
             $reportId = $r['report_id'];
-            $lab = substr($r['computer_id'], 0, 1);
-            $pc = substr($r['computer_id'], 1);
+            $computer_id = $r['computer_id'];
+            $lab = substr($computer_id, 0, 1);
+            $pc = substr($computer_id, 1);
             $desc = $r['issue'];
             $date = $r['date'];
             $status = $r['status'];
@@ -40,10 +41,7 @@
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-secondary'>$status</span></td>";
                 $table .= "<td class='align-middle'>
-                    <form id='report-id$reportId' method='POST' action='../../php/resolveIssue.php'>
-                        <input type='text' name='key' class='hidden' value='$reportId' />
-                        <input class='btn btn-success btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='Resolve'/>
-                    </form>
+                        <input data-report='$reportId' data-computer='$computer_id' class='btn btn-success btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td>";
             }
             else if($status == "resolved")
@@ -51,24 +49,17 @@
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-success'>$status</span></td>";
                 $table .= "<td class='align-middle'>
-                <form id='report-id$reportId' method='POST' action='../../php/unresolveIssue.php'>
-                    <input type='text' name='key' class='hidden' value='$reportId' />
-                    <input class='btn btn-secondary btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='Unresolve'/>
-                </form>
+                <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 me-3' type='button' onclick='unresolve(this)' value='Unresolve'/>
                 </td>";
             }
             $table .= "<td class='align-middle'>
-                <form id='report-id$reportId' method='POST' action='../../php/deleteIssue.php'>
-                    <input type='text' name='key' class='hidden' value='$reportId' />
-                    <input class='btn btn-danger btn-sm mb-0 me-3' type='submit' onclick='resolve()' value='delete'/>
-                </form>
+                    <input data-report='$reportId' data-computer='$computer_id' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td>";
-
             
             $table .= "</tr>";
         }
-        $file = fopen("table.txt", "w");
-        fwrite($file, $table);
-        fclose($file);
     }
+    $file = fopen("table.txt", "w");
+    fwrite($file, $table);
+    fclose($file);
 ?>
