@@ -41,6 +41,25 @@ function show_computer_form() {
     }
 }
 
+function show_computer_details(button) {
+    var values = { 'pc': button.dataset.pcid };
+
+    $.ajax({
+        url: "../../php/showComputerDetails.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            $("#computer-details").html(msg);
+            $("#computer-details").show();
+        }
+    });
+}
+
+function hide_details() {
+    $("#computer-details").hide();
+}
+
 function add_computer() {
     $("#add-pc-form").validate({
         rules: {
@@ -78,6 +97,27 @@ function add_computer() {
             })
         }
     })
+}
+
+function remove_computer(button) {
+    if(confirm("Remove Computer from Databse?\n(This will also delete the reports)")) {
+        var values = { 'pc': button.dataset.pcid };
+        $.ajax({
+            url: "../../php/removeComputer.php",
+            type: "POST",
+            data: values,
+
+            success: function(msg) {
+                if(msg == "OK") {
+                    generate_computer_table();
+                }
+                else
+                {
+                    console.log(msg);
+                }
+            }
+        });
+    }
 }
 
 function logout() {

@@ -11,7 +11,6 @@ $(function() {
                 required: true,
                 number: true,
                 min: 1,
-                max: 20
             },
             issue: "required",
             usability: "required"

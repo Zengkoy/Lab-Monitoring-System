@@ -58,18 +58,18 @@
             
             $table .= "</div>
               <div class='d-flex align-items-center text-sm font-weight-bold'>
-                    <button class='p-0 btn btn-link text-info'>View Status</button>
+                    <button class='p-0 btn btn-link text-info' onclick='show_computer_details(this)' data-pcid='$computerId'>View Status</button>
                     <p>|</p>
-                    <button class='p-0 btn btn-link text-danger'>Remove</button>
+                    <button class='p-0 btn btn-link text-danger' onClick='remove_computer(this)' data-pcid='$computerId'>Remove</button>
                   </div>
             </li>";
         }
-        $file = fopen("comp-table.txt", "w");
-        fwrite($file, $table);
-        fclose($file);
     }
     else
     {
-        echo mysqli_error();
+        $table .= "<li>There are no computers in Lab $lab.</li>";
     }
+    $file = fopen("comp-table.txt", "w");
+    fwrite($file, $table);
+    fclose($file);
 ?>

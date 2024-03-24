@@ -58,7 +58,7 @@ function resolve(button) {
             }
             else
             {
-                console.log(form);
+                console.log(msg);
             }
         }
     });
@@ -80,7 +80,7 @@ function unresolve(button) {
             }
             else
             {
-                console.log(form);
+                console.log(msg);
             }
         }
     });
@@ -102,7 +102,7 @@ function delete_report(button) {
             }
             else
             {
-                console.log(form);
+                console.log(msg);
             }
         }
     });
