@@ -12,7 +12,7 @@
     }
 
     $issues = array();
-    $query = mysqli_query($conn, "SELECT * FROM reports WHERE computer_id='$pcid';");
+    $query = mysqli_query($conn, "SELECT * FROM reports WHERE computer_id='$pcid' AND status='pending';");
 
     while($i = mysqli_fetch_assoc($query))
     {
@@ -53,7 +53,7 @@
         
         $table .= "<span class='mb-2 text-xs'>Laboratory: <span class='text-dark font-weight-bold ms-sm-2'>Lab $lab</span></span>
                   <span class='mb-2 text-xs'>Computer ID: <span class='text-dark ms-sm-2 font-weight-bold'>$pcid</span></span>
-                  <span class='text-xs'>Reported Issues: <span class='text-dark ms-sm-2 font-weight-bold'>$issueCount</span></span>
+                  <span class='text-xs'>Unresolve Issues: <span class='text-dark ms-sm-2 font-weight-bold'>$issueCount</span></span>
                 </div>
                 <div class='ms-auto text-end'>
                   <a class='btn btn-link text-dark px-3 mb-0' href='javascript:;'><i class='fas fa-book text-dark me-2' aria-hidden='true'></i>View Reports</a>
