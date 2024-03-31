@@ -16,6 +16,10 @@ window.onload = function() {
     });
 };
 
+function show_reports() {
+    $('#related-reports').show();
+}
+
 function generate_computer_table() {
     $.ajax({
         type: "POST",
@@ -58,6 +62,7 @@ function show_computer_details(button) {
 
 function hide_details() {
     $("#computer-details").hide();
+    $('#related-reports').hide();
 }
 
 function add_computer() {
@@ -129,6 +134,78 @@ function logout() {
         },
         error: function(errorThrown){
             $("#error").html(errorThrown);
+        }
+    });
+}
+
+function resolve(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
+    $.ajax({
+        url: "../../php/resolveIssue.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            if(msg == "OK") {
+                generate_computer_table();
+                $("#computer-details").hide();
+                $('#related-reports').hide();
+            }
+            else
+            {
+                console.log(msg);
+            }
+        }
+    });
+}
+
+function unresolve(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
+    $.ajax({
+        url: "../../php/unresolveIssue.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            if(msg == "OK") {
+                generate_computer_table();
+                $("#computer-details").hide();
+                $('#related-reports').hide();
+            }
+            else
+            {
+                console.log(msg);
+            }
+        }
+    });
+}
+
+function delete_report(button) {
+    var values = {
+        'key': button.dataset.report,
+        'pc': button.dataset.computer
+    };
+    $.ajax({
+        url: "../../php/deleteIssue.php",
+        type: "POST",
+        data: values,
+
+        success: function(msg) {
+            if(msg == "OK") {
+                generate_computer_table();
+                $("#computer-details").hide();
+                $('#related-reports').hide();
+            }
+            else
+            {
+                console.log(msg);
+            }
         }
     });
 }

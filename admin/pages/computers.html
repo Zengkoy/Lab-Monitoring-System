@@ -283,10 +283,10 @@
               <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank" href="sign-up.html">Add an Admin</a>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <button type="button" onclick="logout()" class="nav-link text-body font-weight-bold px-0">
+              <a id="logout" href="#" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Logout</span>
-              </button>
+              </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -792,6 +792,7 @@
   <script src="../../js/jquery.min.js"></script>
   <script src="../../js/jquery.validate.min.js"></script>
   <script src="../assets/js/computers.js"></script>
+  <script src="../assets/js/logout.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
