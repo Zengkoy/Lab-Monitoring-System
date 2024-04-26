@@ -1,20 +1,104 @@
-function insertLog(usn) {
-    var values = { 'usn': usn };
+window.onload = function() {
+    $.ajax({
+        url: "../../php/loginCheck.php",
+
+        success: function(msg) {
+            if(msg == "OK") {
+                listSubjects();
+            }
+            else {
+                window.location.replace('../');
+            }
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
+};
+
+function listSubjects() {
+    
+    $.ajax({
+        url: "../../php/generateSubjects.php",
+
+        success: function(msg) {
+            $("#select-subject").html(msg);
+        },
+        error: function(errorThrown) {
+            console.log(errorThrown);
+        }
+    });
+}
+
+function addSubject() {
+    var subject = $("#subject-name").val();
+
+    if(subject != "") {
+        $.ajax({
+            url: "../../php/addSubject.php",
+            type: "POST",
+            data: {'subject': $("#subject-name").val()},
+    
+            success: function(msg) {
+                if(msg == "OK") {
+                    alert("Success");
+                    location.reload();
+                }
+                else {
+                    $("#error").html(msg);
+                }
+            }
+        })
+    }
+    else {
+        $("#error").html("Please enter a subject name");
+    }
+}
+
+function showSubForm() {
+    if($("#show-hide-btn").html() == "Cancel") {
+        $("#show-hide-btn").html("Add Subject");
+    }
+    else {
+        $("#show-hide-btn").html("Cancel");
+    }
+    $("#add-subject").toggle();
+    
+}
+
+function insertLog(usn, subject, lab) {
+    var values = { 
+        'usn': usn,
+        'subject': subject,
+        'lab': lab
+    };
 
     $.ajax({
         url: "../../php/inputLog.php",
         type: "POST",
         data: values,
+        datatype: "text",
 
         success: function(msg) {
-            console.log(msg);
+            if(msg == "OK") {
+                alert("User Logged.")
+            }
+            else {
+                $("#error").html(msg);
+            }
+        },
+
+        error: function() {
+            console.log("Error");
         }
     });
 }
 
 function onScanSuccess(decodedText, decodedResult) {
     // handles the scanned code
-    //insertLog(decodedText);
+    var subject = $("#subject").val();
+    var lab = $("#lab").val();
+    insertLog(decodedText, subject, lab);
     console.log(`Code matched = ${decodedText}`, decodedResult);
     $("#html5-qrcode-button-camera-stop").click();
 }

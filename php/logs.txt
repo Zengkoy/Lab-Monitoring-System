@@ -1,0 +1,161 @@
+<tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 17:47:40</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 09:46:23</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Villar, Roberto D.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>ACT22</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC3</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 09:34:13</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Villar, Roberto D.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>ACT22</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 2</p>
+              <p class='text-xs text-secondary mb-0'>PC13</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 09:27:07</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 09:07:53</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 08:44:49</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 2</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 08:44:27</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Justin B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSIT42</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC1</p>
+            </td>
+            <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-04-26 08:42:50</span>
+            </td>
+            
+          </tr>
