@@ -19,6 +19,8 @@ window.onload = function() {
 function generate_report_table() {
     $.ajax({
         url: "../../php/listReports.php",
+        type: "POST",
+        data: { 'lab': $("#lab-select").val() },
 
         success: function() {
             $("#reportsTable").load("../../php/table.txt");

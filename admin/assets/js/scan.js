@@ -80,8 +80,8 @@ function insertLog(usn, subject, lab) {
         datatype: "text",
 
         success: function(msg) {
-            if(msg == "OK") {
-                alert("User Logged.")
+            if(msg.substr(0, 2) == "OK") {
+                alert(("User Logged. Assigned PC:").concat(msg.substr(3)));
             }
             else {
                 $("#error").html(msg);

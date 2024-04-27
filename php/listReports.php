@@ -1,7 +1,9 @@
 <?php
     @include 'config.php';
 
-    $query = mysqli_query($conn,"SELECT * FROM reports;");
+    $lab = $_POST['lab'];
+
+    $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab';");
     $row = array();
     $table = "";
 

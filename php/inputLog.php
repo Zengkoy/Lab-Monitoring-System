@@ -39,7 +39,7 @@
             { 
                 $query = "INSERT INTO logs (computer_id, student_id, date) VALUES ('$assigned_pc', '$usn', '$date');";
 
-                if(mysqli_query($conn, $query)) { echo "OK"; }
+                if(mysqli_query($conn, $query)) { echo "OK". $assigned_pc; }
                 else { echo mysqli_error($conn) . "1"; }
             }
             else { echo mysqli_error($conn) . "0"; }
@@ -49,7 +49,7 @@
             $assigned_pc = $assignment[0]['computer_id'];
             $query = "INSERT INTO logs (computer_id, student_id, date) VALUES ('$assigned_pc', '$usn', '$date');";
 
-            if(mysqli_query($conn, $query)) { echo "OK"; }
+            if(mysqli_query($conn, $query)) { echo "OK". $assigned_pc; }
             else { echo mysqli_error($conn); }
         }
     }

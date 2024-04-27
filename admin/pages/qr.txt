@@ -1,0 +1,3 @@
+<qr-code id='qr-code' contents='745135648632' module-color='#C50000' position-ring-color='#C50000' position-center-color='#C50000' class='container-fluid w-100'>
+    <img src='../../images/aclc-logo.png' slot='icon' class='w-100'>
+</qr-code>

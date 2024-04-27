@@ -1,7 +1,22 @@
 <?php
     @include 'config.php';
 
-    $query = mysqli_query($conn,"SELECT * FROM logs ORDER BY date DESC;");
+    $lab = $_POST['lab'];
+    $date = "";
+    $query = "";
+
+    if($_POST['date'] != "")
+    {
+      $date = $_POST['date'];
+
+      $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' ORDER BY date DESC;");
+    }
+    else
+    {
+      $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' ORDER BY date DESC;");
+    }
+
+    /* $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' ORDER BY date DESC;"); */
     $logs = array();
     $table = "";
 
@@ -53,6 +68,10 @@
             
           </tr>";
         }
+    }
+    else
+    {
+      $table = "<h6>No Matching Logs</h6>";
     }
     $file = fopen("logs.txt", "w");
     fwrite($file, $table);

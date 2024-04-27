@@ -120,7 +120,7 @@
                 <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 me-3' type='button' onclick='unresolve(this)' value='Unresolve'/>
                 </td>";
             }
-            $table .= "<td class='align-middle'>
+            $table .= "<td class='w-5 align-middle'>
                     <input data-report='$reportId' data-computer='$computer_id' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td>";
             
