@@ -11,35 +11,43 @@
 
         $msg = "";
         
-        $select = "SELECT * FROM admin WHERE username = '$username' && password = '$password';";
+        $select = "SELECT * FROM admin WHERE username = '$username';";
         $result = mysqli_query($conn, $select);
 
         if(mysqli_num_rows($result) > 0)
         {
-            if(isset($_POST["rememberMe"]))
+            $user = mysqli_fetch_assoc($result);
+
+            if(password_verify($password, $user['password']))
             {
-                $login_string = hash('sha512', $username . $_SERVER['HTTP_USER_AGENT'] . time());
-                $cookie_name  = 'user_str_session';  
-                $cookie_value = $login_string;
-                setcookie($cookie_name, $cookie_value, time() + (86400 * 1), "/");
-            }
+                if(isset($_POST["rememberMe"]))
+                {
+                    $login_string = hash('sha512', $username . $_SERVER['HTTP_USER_AGENT'] . time());
+                    $cookie_name  = 'user_str_session';  
+                    $cookie_value = $login_string;
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 1), "/");
+                }
 
-            $insert = "INSERT INTO login_log VALUES('$username', '$cookie_value', '$date');";
+                $insert = "INSERT INTO login_log VALUES('$username', '$cookie_value', '$date');";
 
-            if(mysqli_query($conn, $insert)){
-                $row = mysqli_fetch_array($result);
-                $_SESSION['id'] = $row['admin_id'];
-                $msg = "OK";
+                if(mysqli_query($conn, $insert)){
+                    $_SESSION['id'] = $user['admin_id'];
+                    $msg = "OK";
+                }
+                else{
+                    $msg = mysqli_error($conn);
+                }
+                
+                echo $msg;
             }
-            else{
-                $msg = mysqli_error($conn);
+            else
+            {
+                echo "Invalid Password";
             }
-            
-            echo $msg;
         }
         else
         {
-            echo "Incorrect username or password";
+            echo "Invalid username";
         }
 
         /* $_SESSION["id"] = 1;

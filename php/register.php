@@ -13,6 +13,7 @@ if($_POST)
 {
     $username = trim(stripslashes($_POST['username']));
     $password = trim(stripslashes($_POST['password']));
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
     $select = "SELECT * FROM admin WHERE username = '$username';";
     $result = mysqli_query($conn, $select);
@@ -23,9 +24,9 @@ if($_POST)
     }
     else
     {
-        $query = "INSERT INTO admin(username, password) VALUES('$username', '$password');";
+        $query = "INSERT INTO admin(username, password) VALUES('$username', '$hash');";
         if (mysqli_query($conn, $query)) { echo "OK"; }
-        else { echo mysqli_error(); }
+        else { echo mysqli_error($conn); }
     }
 }
 
