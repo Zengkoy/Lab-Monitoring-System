@@ -15,6 +15,26 @@
               <p class='text-xs text-secondary mb-0'>PC5</p>
             </td>
             <td class='align-middle text-center'>
+              <span class='text-secondary text-xs font-weight-bold'>2024-05-04 18:00:14</span>
+            </td>
+            
+          </tr><tr>
+            <td>
+              <div class='d-flex px-2 py-1'>
+                <div class='d-flex flex-column justify-content-center'>
+                  <h6 class='mb-0 text-sm'>Nabong, Janicka Rome B.</h6>
+                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>BSED 2E</p>
+            </td>
+            <td>
+              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
+              <p class='text-xs text-secondary mb-0'>PC5</p>
+            </td>
+            <td class='align-middle text-center'>
               <span class='text-secondary text-xs font-weight-bold'>2024-04-27 20:16:12</span>
             </td>
             

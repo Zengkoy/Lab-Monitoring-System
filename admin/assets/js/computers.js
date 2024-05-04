@@ -141,7 +141,7 @@ function logout() {
 function resolve(button) {
     var values = {
         'key': button.dataset.report,
-        'pc': button.dataset.computer
+        'pc': button.dataset.pcid
     };
     $.ajax({
         url: "../../php/resolveIssue.php",
@@ -151,6 +151,7 @@ function resolve(button) {
         success: function(msg) {
             if(msg == "OK") {
                 generate_computer_table();
+                show_computer_details(button);
                 $("#computer-details").hide();
                 $('#related-reports').hide();
             }
@@ -165,7 +166,7 @@ function resolve(button) {
 function unresolve(button) {
     var values = {
         'key': button.dataset.report,
-        'pc': button.dataset.computer
+        'pc': button.dataset.pcid
     };
     $.ajax({
         url: "../../php/unresolveIssue.php",
@@ -175,6 +176,7 @@ function unresolve(button) {
         success: function(msg) {
             if(msg == "OK") {
                 generate_computer_table();
+                show_computer_details(button);
                 $("#computer-details").hide();
                 $('#related-reports').hide();
             }
@@ -189,7 +191,7 @@ function unresolve(button) {
 function delete_report(button) {
     var values = {
         'key': button.dataset.report,
-        'pc': button.dataset.computer
+        'pc': button.dataset.pcid
     };
     $.ajax({
         url: "../../php/deleteIssue.php",
@@ -199,6 +201,7 @@ function delete_report(button) {
         success: function(msg) {
             if(msg == "OK") {
                 generate_computer_table();
+                show_computer_details(button);
                 $("#computer-details").hide();
                 $('#related-reports').hide();
             }
