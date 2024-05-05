@@ -1,3 +1,18 @@
+window.onload = function() {
+    $.ajax({
+        url: "../php/studentLoginCheck.php",
+
+        success: function(msg) {
+            if(msg != "OK") {
+				window.location.replace('../index.html');
+            }
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
+};
+
 $(function() {
     $('#contactForm').validate({
         rules: {
@@ -28,7 +43,7 @@ $(function() {
 
             $.ajax({
                 type: "POST",
-                url: "php/submitTicket.php",
+                url: "../php/submitTicket.php",
                 data: $(form).serialize(),
 
                 beforeSend: function() { 
@@ -73,6 +88,20 @@ $(function() {
                     $submit.css('display', 'none');
                 }
             })
+        }
+    });
+});
+
+
+$("#logout-button").click(function() {
+    $.ajax({
+        url: "../php/logout.php",
+
+        success: function() {
+            window.location.replace('../index.html');
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
         }
     });
 });

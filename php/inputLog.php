@@ -2,12 +2,13 @@
     @include 'config.php';
 
     $usn = $_POST["usn"];
+    $password = $_POST["password"];
     $subject = $_POST["subject"];
     $lab = $_POST["lab"];
     $date = date("Y-m-d H:i:s");
 
     $query = mysqli_query($conn, "SELECT * FROM students WHERE student_id = '$usn';");
-    $student = mysqli_fetch_row($query);
+    $student = mysqli_fetch_assoc($query);
 
     $query = mysqli_query($conn, "SELECT * FROM pc_assignment WHERE student_id = '$usn' AND subject = '$subject'
                                                                     AND computer_id RLIKE '^$lab';");
@@ -29,7 +30,7 @@
     }
 
     $assigned_pc = $available_pc[0]['computer_id'];
-    if(!empty($student))
+    if(!empty($student) and $student['password'] == $password)
     {
         if(empty($assignment))
         {

@@ -5,7 +5,7 @@
         url: "../php/loginCheck.php",
 
         success: function(msg) {
-            if(msg == "OK") { window.location.replace('pages/table.html'); }
+            if(msg == "OK") { window.location.replace('pages/dashboard.html'); }
 			else { loginForm(); }
         },
         error: function(errorThrown){
@@ -44,7 +44,7 @@
                         },
                         success: function(msg) {
                         if (msg == 'OK') {
-                            window.location.replace('pages/table.html');
+                            window.location.replace('pages/dashboard.html');
 			               
 			            } else {
 			               $('#fail').html(msg);

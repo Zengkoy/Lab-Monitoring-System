@@ -15,7 +15,8 @@ if($_POST)
     $name = trim(stripslashes($_POST['name']));
     $course = trim(stripslashes($_POST['course']));
     $password = trim(stripslashes($_POST['password']));
-    $qrCode = "<qr-code id='qr-code' contents='$usn' module-color='#C50000' position-ring-color='#C50000' position-center-color='#C50000' class='container-fluid w-100'>
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $qrCode = "<qr-code id='qr-code' contents='$usn|$hash' module-color='#C50000' position-ring-color='#C50000' position-center-color='#C50000' class='container-fluid w-100'>
     <img src='../../images/aclc-logo.png' slot='icon' class='w-100'>
 </qr-code>";
 
@@ -28,7 +29,7 @@ if($_POST)
     }
     else
     {
-        $query = "INSERT INTO students VALUES('$usn', '$password', '$name', '$course');";
+        $query = "INSERT INTO students VALUES('$usn', '$hash', '$name', '$course');";
         if (mysqli_query($conn, $query)) 
         { 
             echo "OK" . $qrCode;

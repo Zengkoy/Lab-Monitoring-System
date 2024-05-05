@@ -66,9 +66,30 @@ function showSubForm() {
     
 }
 
-function insertLog(usn, subject, lab) {
+function insertLog(code, subject, lab) {
+    var usn = "";
+    var password = "";
+
+    for(let i=0; i < code.length; i++) {
+        var character = code.charAt(i);
+        if(character == '|') { break; }
+        else {
+            usn += character;
+        }
+        console.log(character);
+    }
+
+    for(let i=0; i < code.length; i++) {
+        var character = code.charAt(code.length - i);
+        if(character == '|') { break; }
+        else {
+            password = character + password;
+        }
+    }
+
     var values = { 
         'usn': usn,
+        'password': password,
         'subject': subject,
         'lab': lab
     };

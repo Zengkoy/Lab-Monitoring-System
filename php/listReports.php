@@ -16,7 +16,10 @@
     {
         foreach($row as $r)
         {
-            $reportId = $r['report_id'];
+            $reporter = $r['submitted_by'];
+            $query = mysqli_query($conn,"SELECT name FROM students WHERE student_id = '$reporter';");
+            $reporter = mysqli_fetch_assoc($query)['name'];
+
             $computer_id = $r['computer_id'];
             $lab = substr($computer_id, 0, 1);
             $pc = substr($computer_id, 1);
@@ -27,7 +30,7 @@
             $table .= "<tr>";
 
             $table .= "<td class='align-middle text-center'>";
-            $table .= "<span class='text-secondary text-xs font-weight-bold'>$reportId</span></td>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$reporter</span></td>";
             
             $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$lab</span></td>";
             $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$pc</span></td>";

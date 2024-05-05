@@ -98,24 +98,25 @@ new Chart(ctx2, {
     },
     scales: {
         y: {
-        grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5]
-        },
-        ticks: {
-            display: true,
-            padding: 10,
-            color: '#b2b9bf',
-            font: {
-            size: 11,
-            family: "Open Sans",
-            style: 'normal',
-            lineHeight: 2
+            suggestedMax: 10,
+            grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
             },
-        }
+            ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                size: 11,
+                family: "Open Sans",
+                style: 'normal',
+                lineHeight: 2
+                },
+            }
         },
         x: {
         grid: {
@@ -130,10 +131,10 @@ new Chart(ctx2, {
             color: '#b2b9bf',
             padding: 20,
             font: {
-            size: 11,
-            family: "Open Sans",
-            style: 'normal',
-            lineHeight: 2
+                size: 11,
+                family: "Open Sans",
+                style: 'normal',
+                lineHeight: 2
             },
         }
         },
