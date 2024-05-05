@@ -20,6 +20,7 @@
             $query = mysqli_query($conn,"SELECT name FROM students WHERE student_id = '$reporter';");
             $reporter = mysqli_fetch_assoc($query)['name'];
 
+            $reportId = $r['report_id'];
             $computer_id = $r['computer_id'];
             $lab = substr($computer_id, 0, 1);
             $pc = substr($computer_id, 1);
@@ -35,8 +36,11 @@
             $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$lab</span></td>";
             $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$pc</span></td>";
             
-            $table .= "<td class='align-middle text-center desc'>";
-            $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span></td>";
+            $table .= "<td id='desc$reportId' class='align-middle text-center'>
+            <div class='desc'>
+            <button onClick='show_description(this)' class='btn btn-link m-0' data-id='$reportId'><i class='fa fa-eye'></i></button>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span>
+            </div></td>";
 
             $table .= "<td class='align-middle text-center'>";
             $table .= "<span class='text-secondary text-xs font-weight-bold'>$date</span></td>";

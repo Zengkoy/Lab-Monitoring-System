@@ -109,3 +109,18 @@ function delete_report(button) {
         }
     });
 }
+
+function show_description(button) {
+    var reportId = button.dataset.id;
+    var desc = "#desc";
+    var overflow = $(desc + reportId).css("overflow");
+
+    if (overflow == "visible"){
+        $(desc + reportId).css("overflow", "hidden");
+        $(desc + reportId).css("white-space", "normal");
+    }
+    else {
+        $(desc + reportId).css("overflow", "visible");
+        $(desc + reportId).css("white-space", "");
+    }
+}
