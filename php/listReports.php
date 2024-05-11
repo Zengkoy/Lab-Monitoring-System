@@ -38,7 +38,7 @@
             
             $table .= "<td id='desc$reportId' class='align-middle text-center'>
             <div class='desc'>
-            <button onClick='show_description(this)' class='btn btn-link m-0' data-id='$reportId'><i class='fa fa-eye'></i></button>";
+            <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='$reportId'><i class='fa fa-eye'></i></button>";
             $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span>
             </div></td>";
 

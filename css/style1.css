@@ -20,7 +20,7 @@
   --gray-dark: #343a40;
   --primary: #007bff;
   --secondary: #6c757d;
-  --success: #ff6e0d;
+  --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
   --danger: #dc3545;
@@ -393,8 +393,11 @@ mark,
     content: "\2014\00A0"; }
 
 .img-fluid {
-  max-width: 100%;
-  height: 3000px; }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto; }
 
 .img-thumbnail {
   padding: 0.25rem;
@@ -8159,8 +8162,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .bg-primary {
-  background: #052659 !important;
-}
+  background: #0056b3 !important; }
 
 .ftco-section {
   padding: 7em 0; }
@@ -8214,9 +8216,7 @@ textarea.form-control {
   box-shadow: 0px 21px 41px -13px rgba(0, 0, 0, 0.18); }
 
 .contact-wrap {
-  background: #fff; 
-  box-shadow: #000;
-}
+  background: #fff; }
 
 .info-wrap h3 {
   color: #fff; }
@@ -8289,10 +8289,7 @@ textarea.form-control {
   font-size: 12px; }
 
 #contactForm .form-control {
-  font-size: 16px;
-background-color: #E4E4E4;
-border-radius: 10px;
-}
+  font-size: 16px; }
 
 #message {
   resize: vertical; }
@@ -8322,4 +8319,33 @@ border-radius: 10px;
   left: 50vw;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+label::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+input[type="radio"]:checked + label::before {
+  background-color: #666;
+  border-color: #666;
+}
+
+input[type="radio"]:focus + label::before {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
 }

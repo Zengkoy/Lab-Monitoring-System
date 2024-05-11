@@ -29,6 +29,7 @@
                 }
                 else { echo mysqli_error($conn); }
             }
+            else {echo "OK";}
         }
         else
         {

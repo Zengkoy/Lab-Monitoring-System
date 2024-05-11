@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  	<head>
+  	<head>					
 		<title>ACLC Computer Lab</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,12 +10,12 @@
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="																																																													style.css">
 
 	</head>
 	<body>
 		<div class="container-fluid p-0">
-			<img class="img-fluid" src="../images/aclc-bg.jpg" alt="">
+			<img class="img-fluid" src="images/aclc-bg.jpg" alt="">
 		</div>
 		<section class="ftco-section">
 			<div class="container">
@@ -23,6 +23,7 @@
 					<div class="col-md-6 text-center mb-5">
 						<h2 class="heading-section bg-light rounded-circle">Report Issue</h2>
 					</div>
+					
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-lg-10 col-md-12">
@@ -47,29 +48,34 @@
 														<input type="text" class="form-control" name="pc" id="pc" placeholder="PC Number">
 													</div>
 												</div>
-												<div class="col-md-6"> 
-													<div class="form-group">
-														
-														<input id="desc-radio-internet" class="form-select" type="radio" name="desc-radio" value="No Internet">
-														<label for="desc-radio-internet">No Internet</label><br>
-						
-														<input id="desc-radio-monitor" class="form-select" type="radio" name="desc-radio" value="Broken Monitor">
-														<label for="desc-radio-monitor">Broken Monitor</label><br>
+												<div>
 													
-														<input id="desc-radio-mouse" type="radio" name="desc-radio" value="Broken Mouse">
-														<label for="desc-radio-mouse">Broken Mouse</label><br>
-														
-														<input id="desc-radio-keyboard" type="radio" name="desc-radio" value="Broken Keyboard">
-														<label for="desc-radio-keyboard">Broken keyboard</label><br>
-														
-														<input id="desc-radio-sysu" type="radio" name="desc-radio" value="Broken System Unit">
-														<label for="desc-radio-sysu">Broken System Unit</label>
-													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
+														
+  <label>
+    <input id="indoor" type="radio" name="indoor-outdoor">
+    No Internet
+  </label>
+  <label>
+    <input id="outdoor" type="radio" name="indoor-outdoor">
+   Broken Monitor
+  </label>
+  <label>
+    <input id="outdoor" type="radio" name="indoor-outdoor">
+    Broken Mouse
+  </label><label>
+    <input id="outdoor" type="radio" name="indoor-outdoor">
+    Broken keyboard
+  </label><label>
+    <input id="outdoor" type="radio" name="indoor-outdoor">
+    Broken System Unit
+  </label>	
 														<textarea name="issue" class="form-control" id="issue" cols="30" rows="7" placeholder="Issue Description"></textarea>
+														
 													</div>
+
 												</div>
 												<div class="col"> 
 													<div class="form-group">
@@ -86,13 +92,10 @@
 												</div>
 											</div>
 										</form>
-										<div class="d-flex justify-content-end">
-											<button id="logout-button" class="btn btn-danger">Logout</button>
-										</div>
 									</div>
 								</div>
 								<div class="col-md-5 d-flex align-items-stretch">
-									<div class="info-wrap bg-dark w-100 p-lg-5 p-4">
+									<div class="info-wrap bg-primary w-100 p-lg-5 p-4">
 										<h3 class="mb-4 mt-md-4">ACLC Computer Lab</h3>
 										<div class="dbox w-100 d-flex align-items-start">
 											<!--<div class="icon d-flex align-items-center justify-content-center">
@@ -135,11 +138,11 @@
 			</div>
 		</section>
 
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/popper.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/jquery.validate.min.js"></script>
-		<script src="../js/submit.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/submit.js"></script>
 	</body>
 </html>
 

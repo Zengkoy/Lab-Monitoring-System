@@ -27,7 +27,7 @@
         $usability = $computer['status'];
         $issueCount = count($issues);
 
-        $table .= "<div class='col-md-7 mt-4'>
+        $table .= "<div class='col-md-9 mt-4'>
         <div class='card'>
           <div class='card-header pb-0 px-3 d-flex'>
             <h6 class='mb-0'>Computer #$pc</h6>
@@ -74,11 +74,11 @@
         if(!empty($issues))
         {
           $table .= "<div id='related-reports' class='mt-4' style='display: none;'>
-          <div class='card'>";
-          $table .= "<div class='card-header pb-0'>
+          <div class='card bg-light'>";
+          $table .= "<div class='card-header pb-0' style='background-color: rgb(22, 198, 221);'>
           <h6>Related Reports</h6>
           </div>";
-          $table .= "<table class='table align-items-center mb-0'>
+          $table .= "<table class='table align-items-center mb-0' style='border: rgb(255, 255, 255);'>
           <thead>
             <tr>
               <th class='text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7'>Issue</th>
@@ -98,8 +98,11 @@
             $computer_id = $r['computer_id'];
 
             $table .= "<tr>";
-            $table .= "<td class='align-middle text-center desc'>";
-            $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span></td>";
+            $table .= "<td id='desc$reportId' class='align-middle text-center'>
+            <div class='desc'>
+            <button onClick='show_description(this)' class='btn btn-link m-0' data-id='$reportId'><i class='fa fa-eye'></i></button>";
+            $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span>
+            </div></td>";
 
             $table .= "<td class='align-middle text-center'>";
             $table .= "<span class='text-secondary text-xs font-weight-bold'>$date</span></td>";
