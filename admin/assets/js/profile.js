@@ -100,3 +100,29 @@ function form_submit() {
         });
     }
 }
+
+function delete_admin() {
+    if(confirm("Delete this Admin Account?")) {
+        $.ajax({
+            url: "../../php/deleteAdmin.php",
+    
+            success: function(msg) {
+                if(msg == "OK") {
+                    window.location.replace("../");
+                }
+                else {
+                    $("#error").html(msg);
+                }
+            },
+            error: function(errorThrown){
+                alert(errorThrown);
+            }
+        });
+    }
+    else {
+        alert("HOY");
+    }
+}
+
+
+$("#delete-admin-btn").click(function() {delete_admin();});
