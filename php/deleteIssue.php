@@ -24,10 +24,12 @@
                 if(mysqli_query($conn, $query)) 
                 { 
                     echo "OK";
-                    /* header("Location: ../admin/pages/table.html");
-                    exit; */
                 }
                 else { echo mysqli_error($conn); }
+            }
+            else
+            {
+                echo "OK";
             }
         }
         else

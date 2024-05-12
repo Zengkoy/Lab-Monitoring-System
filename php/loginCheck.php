@@ -10,9 +10,11 @@
             $result = mysqli_query($conn, $query);
             
             if(mysqli_num_rows($result) > 0){
-                $row = mysqli_fetch_array($result);
+                $row = mysqli_fetch_array($result)['username'];
+                $query = mysqli_query($conn, "SELECT admin_id FROM admin WHERE username='$row';");
+                $id = mysqli_fetch_array($query);
 
-                $_SESSION['id'] = $row['username'];
+                $_SESSION['id'] = $id['admin_id'];
                 echo "OK";
             }
             else{echo "no user";}

@@ -5,7 +5,16 @@
     if($_POST)
     {
         $usn = $_POST["usn"];
-        $password = $_POST["password"];
+        $password = "";
+
+        if(isset($_POST['hash']))
+        {
+            $password = $_POST['hash'];
+        }
+        else
+        {
+            $password = $_POST['password'];
+        }
 
         $msg = "";
         
@@ -16,7 +25,7 @@
         {
             $user = mysqli_fetch_assoc($result);
 
-            if(password_verify($password, $user['password']))
+            if($password == $user['password'] or password_verify($password, $user['password']))
             {
                 $_SESSION['student_id'] = $user['student_id'];
                 $msg = "OK";

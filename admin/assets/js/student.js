@@ -63,11 +63,10 @@
                         },
                         success: function(msg) {
                             if (msg.substr(0,2) == 'OK') {
-                                $("#result").html("Success!");
+                                $("#result").html("<div class='alert alert-success py-0'>Success!</div>");
                                 $("#qr").html(msg.substr(2));
                                 $("#qr-container").show();
                                 console.log($("#qr-container").style.display);
-                                form.reset();
                             } 
                             else {
                                 $("#result").html(msg);
@@ -89,4 +88,11 @@
 
 var qr = $("#qr-container");
 
-$("#done-button").click(function() { qr.hide() });
+$("#done-button").click(function() { 
+    $("#usn").val("");
+    $("#name").val("");
+    $("#course").val("");
+    $("#password").val("");
+    $("#confirmpassword").val("");
+    qr.hide() 
+});
