@@ -4,7 +4,7 @@ window.onload = function() {
 
         success: function(msg) {
             if(msg == "OK") {
-				window.location.replace('student/send_report.html');
+				window.location.replace('student/student-dashboard.html');
             }
         },
         error: function(errorThrown){
@@ -33,7 +33,7 @@ function submit_form() {
 			
 					success: function(msg) {
 						if(msg == "OK") {
-							window.location.replace('student/send_report.html');
+							window.location.replace('student/student-dashboard.html');
 						}
 						else {
 							$("#error-message").show();
@@ -85,7 +85,7 @@ function qrLogin(code) {
 
         success: function(msg) {
             if(msg == "OK") {
-                window.location.replace('student/send_report.html');
+                window.location.replace('student/student-dashboard.html');
             }
             else {
                 $("#error-message").show();

@@ -13,12 +13,16 @@
 if($_POST) 
 {
   $reporter = $_SESSION['student_id'];
-  $lab = trim(stripslashes($_POST['lab']));
-  $pc = trim(stripslashes($_POST['pc']));
-  $issue = trim(stripslashes($_POST['issue']));
-  $radio = trim(stripcslashes($_POST['desc-radio']));
-  $usability = trim(stripslashes($_POST['usability']));
+  
+  $form = $_POST['form'];
+  $lab = $form['lab'];
+  $pc = $form['pc'];
+  $computer_id = $lab . $pc;
+  $usability = $form['usability'];
+  $issueCheck = $_POST['checks'];
+  $issue = $form['issue'];
   $date = date("Y-m-d");
+
 
   $computer_id = $lab . $pc;
 
@@ -36,7 +40,7 @@ if($_POST)
     $query = "UPDATE computers SET status = '$usability' WHERE computer_id = '$computer_id';";
     if(mysqli_query($conn, $query))
     {
-      $query = "INSERT INTO reports(submitted_by, computer_id, issue, status, date) VALUES('$reporter', '$computer_id', '$radio, $issue', 'pending', '$date');";
+      $query = "INSERT INTO reports(submitted_by, computer_id, issue, status, date) VALUES('$reporter', '$computer_id', '$issueCheck$issue', 'pending', '$date');";
       if (mysqli_query($conn, $query)) { echo "OK"; }
       else { echo mysqli_error($conn); }
     }

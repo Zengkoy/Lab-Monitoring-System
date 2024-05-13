@@ -9014,8 +9014,40 @@ fieldset:disabled .btn {
   max-height: 100% !important;
 }
 
+.mh-75 {
+  max-height: 75% !important;
+}
+
+.mh-50 {
+  max-height: 50% !important;
+}
+
+.mh-25 {
+  max-height: 25% !important;
+}
+
 .vh-100 {
   height: 100vh !important;
+}
+
+.vh-75 {
+  height: 75vh !important;
+}
+
+.vh-50 {
+  height: 50vh !important;
+}
+
+.vh-25 {
+  height: 25vh !important;
+}
+
+.vh-5 {
+  height: 5vh !important;
+}
+
+.vh-3 {
+  height: 3vh !important;
 }
 
 .min-vh-25 {
