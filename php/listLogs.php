@@ -9,11 +9,11 @@
     {
       $date = $_POST['date'];
 
-      $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' ORDER BY date DESC;");
+      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date FROM logs WHERE computer_id RLIKE '^$lab' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' ORDER BY date DESC;");
     }
     else
     {
-      $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' ORDER BY date DESC;");
+      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date FROM logs WHERE computer_id RLIKE '^$lab' ORDER BY date DESC;");
     }
 
     /* $query = mysqli_query($conn,"SELECT * FROM logs WHERE computer_id RLIKE '^$lab' ORDER BY date DESC;"); */

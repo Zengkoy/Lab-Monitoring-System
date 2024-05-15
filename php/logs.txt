@@ -15,7 +15,7 @@
               <p class='text-xs text-secondary mb-0'>PC2</p>
             </td>
             <td class='align-middle text-center'>
-              <span class='text-secondary text-xs font-weight-bold'>2024-05-14 14:24:47</span>
+              <span class='text-secondary text-xs font-weight-bold'>2024-05-14 02:24:47 PM</span>
             </td>
             
           </tr><tr>
@@ -35,7 +35,7 @@
               <p class='text-xs text-secondary mb-0'>PC1</p>
             </td>
             <td class='align-middle text-center'>
-              <span class='text-secondary text-xs font-weight-bold'>2024-05-06 11:16:01</span>
+              <span class='text-secondary text-xs font-weight-bold'>2024-05-06 11:16:01 AM</span>
             </td>
             
           </tr>

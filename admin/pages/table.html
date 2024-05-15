@@ -310,10 +310,7 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
+            
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -331,9 +328,7 @@
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
+              
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
                   <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -413,8 +408,12 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0" style="background-color: rgb(22, 198, 221);">
+            <div class="card-header d-flex justify-content-between pb-0" style="background-color: rgb(22, 198, 221);">
               <h6>Reports</h6>
+              <button id="print-button" class="btn btn-warning d-flex mh-25 py-1 ps-2 pe-1 ms-5">
+                <i class="fa fa-print me-1 m-auto"></i>
+                Print
+              </button>
             </div>
             <div class="d-flex" style="background-color: rgb(22, 198, 221);">
               <select class="form-control-sm w-8 p-1 ms-3 m-1" name="lab-select" id="lab-select" onchange="generate_report_table()">
@@ -948,9 +947,9 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../../js/jquery.min.js"></script>
   <script src="../assets/js/sidenav.js"></script>
   <script src="../assets/js/generate-table.js"></script>
-  <script src="../../js/jquery.min.js"></script>
   <script src="../assets/js/logout.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

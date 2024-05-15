@@ -124,3 +124,5 @@ function show_description(button) {
         $(desc + reportId).css("white-space", "");
     }
 }
+
+$("#print-button").click(function() { window.print(); })

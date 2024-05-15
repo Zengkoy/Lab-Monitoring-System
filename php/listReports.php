@@ -50,7 +50,7 @@
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-secondary'>$status</span></td>";
                 $table .= "<td class='align-middle'>
-                        <input data-report='$reportId' data-computer='$computer_id' class='btn btn-success btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
+                        <input data-report='$reportId' data-computer='$computer_id' class='btn btn-warning btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td>";
             }
             else if($status == "resolved")
