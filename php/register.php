@@ -24,7 +24,7 @@ if($_POST)
     }
     else
     {
-        $query = "INSERT INTO admin(username, password) VALUES('$username', '$hash');";
+        $query = "INSERT INTO admin(username, password, email) VALUES('$username', '$hash', '');";
         if (mysqli_query($conn, $query)) { echo "OK"; }
         else { echo mysqli_error($conn); }
     }
