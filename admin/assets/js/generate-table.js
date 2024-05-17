@@ -20,7 +20,10 @@ function generate_report_table() {
     $.ajax({
         url: "../../php/listReports.php",
         type: "POST",
-        data: { 'lab': $("#lab-select").val() },
+        data: { 
+            'lab': $("#lab-select").val(),
+            'status': $("#status-select").val()
+         },
 
         success: function() {
             $("#reportsTable").load("../../php/table.txt");
@@ -125,4 +128,12 @@ function show_description(button) {
     }
 }
 
-$("#print-button").click(function() { window.print(); })
+$("#print-button").click(function() { window.print(); });
+$("#lab-select").change(function() { generate_report_table(); });
+$("#status-select").change(function() { generate_report_table(); });
+
+var $loading = $("#loading").hide();
+
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });

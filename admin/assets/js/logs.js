@@ -51,3 +51,9 @@ $("#clear-date-button").click(function() {
     pcElement.val("");
     generate_logs_table("");
 });
+
+var $loading = $("#loading").hide();
+
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });

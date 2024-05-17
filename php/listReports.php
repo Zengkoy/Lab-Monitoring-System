@@ -2,8 +2,17 @@
     @include 'config.php';
 
     $lab = $_POST['lab'];
+    $status = $_POST['status'];
 
-    $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab';");
+    $query = "";
+    if($status != "") 
+    {
+        $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab' AND status = '$status';");
+    }
+    else
+    {
+        $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab';");
+    }
     $row = array();
     $table = "";
 
@@ -49,16 +58,16 @@
             {
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-secondary'>$status</span></td>";
-                $table .= "<td class='align-middle'>
-                        <input data-report='$reportId' data-computer='$computer_id' class='btn btn-warning btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
+                $table .= "<td class='d-flex justify-content-center'>
+                        <input data-report='$reportId' data-computer='$computer_id' class='btn btn-warning btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td>";
             }
             else if($status == "resolved")
             {
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-success'>$status</span></td>";
-                $table .= "<td class='align-middle'>
-                <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 me-3' type='button' onclick='unresolve(this)' value='Unresolve'/>
+                $table .= "<td class='d-flex justify-content-center'>
+                <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='unresolve(this)' value='Unresolve'/>
                 </td>";
             }
             $table .= "<td class='align-middle'>
