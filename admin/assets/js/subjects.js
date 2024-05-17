@@ -114,3 +114,44 @@ function logout() {
         }
     });
 }
+
+function addSubject() {
+    var subject = $("#subject-name").val();
+
+    if(subject != "") {
+        $.ajax({
+            url: "../../php/addSubject.php",
+            type: "POST",
+            data: {'subject': $("#subject-name").val()},
+    
+            success: function(msg) {
+                if(msg == "OK") {
+                    alert("Subject Added!");
+                    $("#subject-name").val("");
+                    showSubForm();
+                    generate_subjects_table();
+                }
+                else {
+                    $("#error").html(msg);
+                }
+            }
+        })
+    }
+    else {
+        $("#error").html("Please enter a subject name");
+    }
+}
+
+function showSubForm() {
+    if($("#show-hide-btn").html() == "Cancel") {
+        $("#show-hide-btn").html("Add Subject");
+    }
+    else {
+        $("#show-hide-btn").html("Cancel");
+    }
+    $("#add-subject").toggle();
+    
+}
+
+$("#show-hide-btn").click(function() { showSubForm(); });
+$("#add-sub-btn").click(function() { addSubject(); });

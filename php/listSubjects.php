@@ -16,11 +16,11 @@
         {
             $subject = $r['subject'];
 
-            $table .= "<li class='list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg'>
+            $table .= "<li class='list-group-item border-0 d-flex justify-content-between ps-0 mb-2 bg-light border-radius-lg'>
               <div class='d-flex align-items-center'>";
             
             $table .= "<div class='d-flex flex-column'>
-            <h6 class='mb-1 text-dark text-m'>$subject</h6>
+            <h6 class='mb-1 text-dark text-m ps-2'>$subject</h6>
             </div>";
 
             $table .= "</div>

@@ -30,42 +30,6 @@ function listSubjects() {
     });
 }
 
-function addSubject() {
-    var subject = $("#subject-name").val();
-
-    if(subject != "") {
-        $.ajax({
-            url: "../../php/addSubject.php",
-            type: "POST",
-            data: {'subject': $("#subject-name").val()},
-    
-            success: function(msg) {
-                if(msg == "OK") {
-                    alert("Success");
-                    location.reload();
-                }
-                else {
-                    $("#error").html(msg);
-                }
-            }
-        })
-    }
-    else {
-        $("#error").html("Please enter a subject name");
-    }
-}
-
-function showSubForm() {
-    if($("#show-hide-btn").html() == "Cancel") {
-        $("#show-hide-btn").html("Add Subject");
-    }
-    else {
-        $("#show-hide-btn").html("Cancel");
-    }
-    $("#add-subject").toggle();
-    
-}
-
 function insertLog(code, subject, lab) {
     var usn = "";
     var password = "";
