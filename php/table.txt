@@ -2,14 +2,28 @@
             <div class='desc'>
             <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='35'><i class='fa fa-eye'></i></button><span class='text-secondary text-xs font-weight-bold'>No Internet, Broken Monitor, Broken Mouse, </span>
             </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-05-13</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-secondary'>pending</span></td><td class='align-middle'>
-                        <input data-report='35' data-computer='11' class='btn btn-light btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
+                        <input data-report='35' data-computer='11' class='btn btn-warning btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td><td class='align-middle'>
                     <input data-report='35' data-computer='11' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
+                </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>Nabong, Justin B.</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td><span class='text-secondary text-xs font-weight-bold'>4</span></td><td id='desc37' class='align-middle text-center'>
+            <div class='desc'>
+            <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='37'><i class='fa fa-eye'></i></button><span class='text-secondary text-xs font-weight-bold'>Broken Keyboard, walang T</span>
+            </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-05-17</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-secondary'>pending</span></td><td class='align-middle'>
+                        <input data-report='37' data-computer='14' class='btn btn-warning btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
+                    </td><td class='align-middle'>
+                    <input data-report='37' data-computer='14' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>Tito, Lolo B.</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td><span class='text-secondary text-xs font-weight-bold'>3</span></td><td id='desc33' class='align-middle text-center'>
             <div class='desc'>
             <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='33'><i class='fa fa-eye'></i></button><span class='text-secondary text-xs font-weight-bold'>Broken Monitorsirsisrrarsra</span>
-            </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-05-06</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='align-middle'>
-                <input data-report='33' data-computer='13' class='btn btn-secondary btn-sm mb-0 me-3' type='button' onclick='unresolve(this)' value='Unresolve'/>
-                </td><td class='align-middle'>
+            </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-05-06</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-secondary'>pending</span></td><td class='align-middle'>
+                        <input data-report='33' data-computer='13' class='btn btn-warning btn-sm mb-0 me-3' type='button' onclick='resolve(this)' value='Resolve'/>
+                    </td><td class='align-middle'>
                     <input data-report='33' data-computer='13' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
+                </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>Nabong, Justin B.</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td><span class='text-secondary text-xs font-weight-bold'>5</span></td><td id='desc36' class='align-middle text-center'>
+            <div class='desc'>
+            <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='36'><i class='fa fa-eye'></i></button><span class='text-secondary text-xs font-weight-bold'>Broken Monitor, </span>
+            </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-05-17</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='align-middle'>
+                <input data-report='36' data-computer='15' class='btn btn-secondary btn-sm mb-0 me-3' type='button' onclick='unresolve(this)' value='Unresolve'/>
+                </td><td class='align-middle'>
+                    <input data-report='36' data-computer='15' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td></tr>

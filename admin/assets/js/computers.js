@@ -56,6 +56,7 @@ function show_computer_details(button) {
         success: function(msg) {
             $("#computer-details").html(msg);
             $("#computer-details").show();
+            window.scrollTo(0,0);
         }
     });
 }

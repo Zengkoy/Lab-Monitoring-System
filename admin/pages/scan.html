@@ -299,7 +299,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid">
-      <div id="error"></div>
+      <div id="error" class="alert alert-danger text-white" style="display: none;">Error</div>
       <div id="select-subject">
         
       </div>
@@ -310,7 +310,10 @@
           <option value="2">2</option>
         </select>
       </div>
-      
+      <div id="pc-num-container" class="alert alert-primary w-25 m-auto text-center mb-2 py-1" style="display: none;">
+        <p class="text-white mb-0">Assigned PC</p>
+        <h1 id="pc-num" class="text-white trans"></h1>
+      </div>
       <div id="reader" class="container-fluid py-4 w-50">
       
       </div>

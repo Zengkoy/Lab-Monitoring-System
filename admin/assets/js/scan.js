@@ -66,10 +66,16 @@ function insertLog(code, subject, lab) {
 
         success: function(msg) {
             if(msg.substr(0, 2) == "OK") {
-                alert(("User Logged. Assigned PC:").concat(msg.substr(3)));
+                $("#pc-num-container").hide();
+                $("#pc-num").html(msg.substr(3));
+                $("#pc-num-container").fadeIn();
+                setTimeout(function() {$('#error').fadeOut();}, 180000);
             }
             else {
                 $("#error").html(msg);
+                $("#error").show();
+                $("#pc-num-container").hide();
+                setTimeout(function() {$('#error').fadeOut();}, 5000);
             }
         },
 
@@ -85,7 +91,11 @@ function onScanSuccess(decodedText, decodedResult) {
     var lab = $("#lab").val();
     insertLog(decodedText, subject, lab);
     console.log(`Code matched = ${decodedText}`, decodedResult);
-    $("#html5-qrcode-button-camera-stop").click();
+    html5QrcodeScanner.pause(true, false);
+    setTimeout(function() {
+        html5QrcodeScanner.resume();
+    }, 2000);
+    // $("#html5-qrcode-button-camera-stop").click();
 }
 
 function onScanFailure(error) {
@@ -95,6 +105,6 @@ function onScanFailure(error) {
 
 let html5QrcodeScanner = new Html5QrcodeScanner(
 "reader",
-{ fps: 10, qrbox: {width: 250, height: 250} },
+{ fps: 10, qrbox: {width: 300, height: 300} },
 /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
