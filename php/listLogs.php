@@ -2,14 +2,30 @@
     @include 'config.php';
 
     $lab = $_POST['lab'];
+    $pc = $_POST['pc'];
     $date = "";
     $query = "";
 
-    if($_POST['date'] != "")
+    if($_POST['date'] != "" and $pc != "")
+    {
+      $date = $_POST['date'];
+      
+      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date 
+      FROM logs WHERE computer_id = '$lab$pc' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' 
+      ORDER BY date DESC;");
+    }
+    else if($_POST['date'] != "" and $pc == "")
     {
       $date = $_POST['date'];
 
-      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date FROM logs WHERE computer_id RLIKE '^$lab' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' ORDER BY date DESC;");
+      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date 
+      FROM logs WHERE computer_id RLIKE '^$lab' AND DATE_FORMAT(date, '%Y-%m-%d') = '$date' 
+      ORDER BY date DESC;");
+    }
+    else if($_POST['date'] == "" and $pc != "")
+    {
+      $query = mysqli_query($conn,"SELECT student_id, computer_id, DATE_FORMAT(date, '%Y-%m-%d %h:%i:%s %p') as date 
+      FROM logs WHERE computer_id = '$lab$pc' ORDER BY date DESC;");
     }
     else
     {

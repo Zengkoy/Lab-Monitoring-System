@@ -16,13 +16,14 @@ window.onload = function() {
     });
 };
 
-function generate_logs_table(date) {
+function generate_logs_table(date, pc) {
     $.ajax({
         url: "../../php/listLogs.php",
         type: "POST",
         data: { 
             'lab': $("#lab-select").val(),
-            'date': date
+            'date': date,
+            'pc': pc
         },
 
         success: function(msg) {
@@ -35,12 +36,18 @@ function generate_logs_table(date) {
 }
 
 var dateElement = $("#date-select");
-var defaultDate = dateElement.val();
+var pcElement = $("#pc-select");
 
-$("#lab-select").change(function() { generate_logs_table(""); });
-$("#date-select").change(function() { generate_logs_table(dateElement.val()); });
+$("#lab-select").change(function() { 
+    generate_logs_table("", "");
+    dateElement.val("");
+    pcElement.val(""); 
+});
+$("#date-select").change(function() { generate_logs_table(dateElement.val(), pcElement.val()); });
+$("#pc-select").change(function() { generate_logs_table(dateElement.val(), pcElement.val()); });
 
 $("#clear-date-button").click(function() { 
-    dateElement.val(""); 
+    dateElement.val("");
+    pcElement.val("");
     generate_logs_table("");
 });

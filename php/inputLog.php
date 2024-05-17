@@ -1,6 +1,8 @@
 <?php
     @include 'config.php';
 
+    date_default_timezone_set("Asia/Taipei");
+
     $usn = $_POST["usn"];
     $password = $_POST["password"];
     $subject = $_POST["subject"];

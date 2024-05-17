@@ -2,26 +2,6 @@
             <td>
               <div class='d-flex px-2 py-1'>
                 <div class='d-flex flex-column justify-content-center'>
-                  <h6 class='mb-0 text-sm'>jesus, julio r.</h6>
-                  <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class='text-xs font-weight-bold mb-0'>bsit32</p>
-            </td>
-            <td>
-              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
-              <p class='text-xs text-secondary mb-0'>PC2</p>
-            </td>
-            <td class='align-middle text-center'>
-              <span class='text-secondary text-xs font-weight-bold'>2024-05-14 02:24:47 PM</span>
-            </td>
-            
-          </tr><tr>
-            <td>
-              <div class='d-flex px-2 py-1'>
-                <div class='d-flex flex-column justify-content-center'>
                   <h6 class='mb-0 text-sm'>Tito, Lolo B.</h6>
                   <!-- <p class='text-xs text-secondary mb-0'>john@creative-tim.com</p> -->
                 </div>
@@ -31,11 +11,11 @@
               <p class='text-xs font-weight-bold mb-0'>ABM22</p>
             </td>
             <td>
-              <p class='text-xs font-weight-bold mb-0'>Lab 1</p>
-              <p class='text-xs text-secondary mb-0'>PC1</p>
+              <p class='text-xs font-weight-bold mb-0'>Lab 2</p>
+              <p class='text-xs text-secondary mb-0'>PC13</p>
             </td>
             <td class='align-middle text-center'>
-              <span class='text-secondary text-xs font-weight-bold'>2024-05-06 11:16:01 AM</span>
+              <span class='text-secondary text-xs font-weight-bold'>2024-05-06 11:16:26 AM</span>
             </td>
             
           </tr>
