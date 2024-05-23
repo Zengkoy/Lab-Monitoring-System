@@ -37,6 +37,7 @@ function submit_form() {
 						}
 						else {
 							$("#error-message").show();
+                            $("#error-message").html(msg);
                         	setTimeout(function() {
 								$("#error-message").fadeOut();
 							}, 3000);

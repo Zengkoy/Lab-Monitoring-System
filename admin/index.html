@@ -109,10 +109,10 @@
                   <p class="mb-0">Enter your username and password to sign in</p>
                 </div>
                 <div class="card-body">
+                  <div id="fail" class="alert alert-danger" style="display: none;"></div>
                   <form method="post" id="login-form" name="login-form">
                     <label>Username</label>
                     <div class="mb-3">
-                      <div id="fail"></div>
                       <input type="text" class="form-control" placeholder="Username" name="username" aria-label="Email" aria-describedby="email-addon">
                     </div>
                     <label>Password</label>

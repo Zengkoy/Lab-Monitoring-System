@@ -31,31 +31,25 @@
 				/* submit via ajax */
 				
 				submitHandler: function(form) {		
-					var $submit = $('.submitting'),
-						waitText = 'Submitting...';
 
 					$.ajax({   	
                         type: "POST",
                         url: "../php/login.php",
                         data: $(form).serialize(),
 
-                        beforeSend: function() { 
-                            $submit.css('display', 'block').text(waitText);
-                        },
                         success: function(msg) {
                         if (msg == 'OK') {
                             window.location.replace('pages/dashboard.html');
 			               
 			            } else {
-			               $('#fail').html(msg);
-				            // $('#form-message-warning').fadeIn();
-				            $submit.css('display', 'none');
+							$('#fail').show()
+			               	$('#fail').html(msg);
+							setTimeout(function() {$('#fail').fadeOut();}, 5000);
 			            }
 				        },
 				        error: function() {
                             $('#form-message-warning').html("Something went wrong. Please try again.");
                             $('#form-message-warning').fadeIn();
-                            $submit.css('display', 'none');
 				        }
 			        });
 		  		} // end submitHandler
