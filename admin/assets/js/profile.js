@@ -26,6 +26,9 @@ function fill_profile_info() {
             $("#username").html(msg["username"]);
             $("#formUsername").val(msg["username"]);
             $("#formEmail").val(msg["email"]);
+            if(msg["notif"]=="on") {
+                $("#notif").prop("checked", true);
+            }
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -111,7 +114,9 @@ function delete_admin() {
                     window.location.replace("../");
                 }
                 else {
-                    $("#error").html(msg);
+                    $("#result").html("<div class='alert alert-danger py-0'>"+ msg + "</div>");
+                    $("#result").show();
+                    setTimeout(function() {$('#result').fadeOut();}, 3000);
                 }
             },
             error: function(errorThrown){
@@ -124,5 +129,33 @@ function delete_admin() {
     }
 }
 
+function notif_change() {
+    console.log($("#notif").prop("checked"));
+    $.ajax({
+        type: "POST",
+        url: "../../php/editAdmin.php",
+        data: { "notif": $("#notif").prop("checked") },
+
+        success: function(msg) {
+            if(msg == "OK") {
+                $("#result").html("<div class='alert alert-success py-0'>Success!</div>");
+                $("#result").show();
+                setTimeout(function() {$('#result').fadeOut();}, 3000);
+            }
+            else {
+                $("#result").html("<div class='alert alert-danger py-0'>"+ msg + "</div>");
+                $("#result").show();
+                setTimeout(function() {$('#result').fadeOut();}, 3000);
+            }
+        }
+    })
+}
 
 $("#delete-admin-btn").click(function() {delete_admin();});
+$("#notif").click(function() { notif_change(); });
+
+var $loading = $("#loading").hide();
+
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });

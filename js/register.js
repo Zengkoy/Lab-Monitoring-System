@@ -62,12 +62,14 @@
                         success: function(msg) {
                         if (msg == 'OK') {
                             $("#result").html("<p class='alert alert-success'>Success!</p>");
+                            $("#result").show();
                             setTimeout(function() {
 								$("#result").fadeOut();
 							}, 3000);
 			            } 
                         else {
 			                $("#result").html("<p class='alert alert-danger'>" + msg + "</p>");
+                            $("#result").show();
                             setTimeout(function() {
 								$("#result").fadeOut();
 							}, 3000);

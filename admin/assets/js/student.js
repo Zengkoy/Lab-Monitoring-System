@@ -64,6 +64,7 @@
                         success: function(msg) {
                             if (msg.substr(0,2) == 'OK') {
                                 $("#result").html("<div class='alert alert-success py-0'>Success!</div>");
+                                $("#result").show();
                                 setTimeout(function() {
                                     $("#result").fadeOut();
                                 }, 3000);
@@ -73,6 +74,7 @@
                             } 
                             else {
                                 $("#result").html("<p class='alert alert-danger'>" + msg + "</p>");
+                                $("#result").show();
                                 setTimeout(function() {
                                     $("#result").fadeOut();
                                 }, 3000);
