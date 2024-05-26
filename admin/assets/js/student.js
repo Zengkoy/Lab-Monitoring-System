@@ -64,12 +64,18 @@
                         success: function(msg) {
                             if (msg.substr(0,2) == 'OK') {
                                 $("#result").html("<div class='alert alert-success py-0'>Success!</div>");
+                                setTimeout(function() {
+                                    $("#result").fadeOut();
+                                }, 3000);
                                 $("#qr").html(msg.substr(2));
                                 $("#qr-container").show();
                                 console.log($("#qr-container").style.display);
                             } 
                             else {
-                                $("#result").html(msg);
+                                $("#result").html("<p class='alert alert-danger'>" + msg + "</p>");
+                                setTimeout(function() {
+                                    $("#result").fadeOut();
+                                }, 3000);
                             }
 				        },
 				        error: function() {
@@ -96,3 +102,9 @@ $("#done-button").click(function() {
     $("#confirmpassword").val("");
     qr.hide() 
 });
+
+var $loading = $("#loading").hide();
+
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });

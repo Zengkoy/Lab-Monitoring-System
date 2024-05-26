@@ -25,6 +25,7 @@
 				rules: 
 				{
 					username: "required",
+                    email: "required",
 					password: {
                         required: true,
                         minlength: 8
@@ -37,6 +38,7 @@
 				messages: 
 				{
 					username: "Please enter username",
+                    email: "Please enter Email",
 					password: "Please enter password with at least 8 characters",
                     confirmpassword: {
                         required: "Please confirm password",
@@ -59,10 +61,16 @@
                         },
                         success: function(msg) {
                         if (msg == 'OK') {
-                            $("#result").html("Success!")
+                            $("#result").html("<p class='alert alert-success'>Success!</p>");
+                            setTimeout(function() {
+								$("#result").fadeOut();
+							}, 3000);
 			            } 
                         else {
-			                $("#result").html(msg);
+			                $("#result").html("<p class='alert alert-danger'>" + msg + "</p>");
+                            setTimeout(function() {
+								$("#result").fadeOut();
+							}, 3000);
 			            }
 				        },
 				        error: function() {
@@ -78,3 +86,9 @@
 	};
 
 })(jQuery);
+
+var $loading = $("#loading").hide();
+
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });
