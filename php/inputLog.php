@@ -48,8 +48,10 @@
     
     if(!empty($student) and $student['password'] == $password)
     {
-        if(empty($assignment))
+        if(empty($assignment) and count($available_pc) > 0)
         {
+            //if NO Assigned PC
+            $assigned_pc = $available_pc[0]['computer_id'];
             $query = "INSERT INTO pc_assignment (student_id, subject, computer_id) VALUES ('$usn', '$subject', '$assigned_pc');";
 
             if(mysqli_query($conn, $query)) 
@@ -63,14 +65,16 @@
         }
         else if($assignmentAvailable)
         {
+            //if Assigned PC is Functional
             $assigned_pc = $assignment;
 
             $query = "INSERT INTO logs (computer_id, student_id, date) VALUES ('$assigned_pc', '$usn', '$date');";
             if(mysqli_query($conn, $query)) { echo "OK". $assigned_pc; }
             else { echo mysqli_error($conn); }
         }
-        else if(!empty($available_pc))
+        else if(!empty($assignment) and !$assignmentAvailable and !empty($available_pc))
         {
+            //if Assigned PC is NOT functional and there is extra pc Available
             $assigned_pc = $available_pc[0]['computer_id'];
 
             $query = "INSERT INTO logs (computer_id, student_id, date) VALUES ('$assigned_pc', '$usn', '$date');";
