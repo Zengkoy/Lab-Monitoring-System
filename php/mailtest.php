@@ -7,10 +7,14 @@ require_once __DIR__.'/vendor/autoload.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/PHPMailer.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/SMTP.php';
+include 'QRImageWithLogo.php';
 
-$options = new QROptions;
-$options->cachefile = "../php/qrcode.png";
-$qrCode = (new QRCode)->render("20002712400", "../php/qrcode.png");
+$qrcode = new QRCode($options);
+$qrcode->addByteSegment('YOYOYOYOYOY');
+
+$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getQRMatrix());
+
+$qrOutputInterface->dump('qrcode.png', '../images/aclc-logo.png');
 
 $mail = new PHPMailer;
 $mail->isSMTP(); 
@@ -24,7 +28,7 @@ $mail->Password = 'wgsk xipl nkgq noho'; // password
 $mail->setFrom('aclcapalitlabs@gmail.com', 'ACLC Apalit Labs'); // From email and name
 $mail->addAddress('justnabong17@gmail.com', 'Mr. Brown'); // to email and name
 $mail->Subject = 'PHPMailer GMail SMTP test';
-$mail->AddEmbeddedImage($options->cachefile, "my-attach", "qr-code");
+$mail->AddEmbeddedImage("qrcode.png", "my-attach", "qr-code");
 $mail->msgHTML("<img src='cid:my-attach' />"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
 $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
 // $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
@@ -38,5 +42,5 @@ $mail->SMTPOptions = array(
 if(!$mail->send()){
     echo "Mailer Error: " . $mail->ErrorInfo;
 }else{
-    echo $qrCode;
+    echo "OK";
 }

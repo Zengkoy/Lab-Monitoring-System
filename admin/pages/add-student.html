@@ -157,20 +157,18 @@
                 <div id="loading" class="spinner-border text-primary" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
-                <div id="qr-container" class="text-center" style="display: none;">
-                    <div id="result"></div>
-                    <div class="d-flex justify-content-center">
-                        <i class='fas fa-arrow-down m-2'></i>
-                        <h6 class="text-center">Save this Code</h6>
-                        <i class='fas fa-arrow-down m-2'></i>
-                    </div>
-                    <div id="qr">
-                        
-                    </div>
-                    <button id="done-button" class="btn btn-success">Done</button>
-                  </div>
-                
+                <div id="result"></div>
+                <div class="mb-3">
+                  <form id="file-form"></form>
+                  <label for="file">Upload CSV file</label>
+                  <input id="file" name="file" type="file" class="form-control">
+                  <button id="submit-file-btn" class="btn bg-gradient-dark w-100 my-4 mb-2">Submit</button>
+                </div>
                 <form method="post" id="register-form" name="register-form" role="form text-left">
+                  
+                  <hr>
+                  <h6>or</h6>
+                  <hr>
                   <div class="mb-3">
                     <label for="usn">USN</label>
                     <input id="usn" name="usn" type="text" class="form-control" placeholder="USN" aria-label="USN" aria-describedby="email-addon" autocomplete="off">
@@ -180,16 +178,17 @@
                     <input id="name" name="name" type="text" class="form-control" placeholder="Name" aria-label="name" aria-describedby="email-addon" autocomplete="off">
                   </div>
                   <div class="mb-3">
-                    <label for="course">Course/Year/Section (ex. BSIT32 or BSBA11-b)</label>
-                    <input id="course" name="course" type="text" class="form-control" placeholder="Course" aria-label="course" aria-describedby="email-addon" autocomplete="off">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" autocomplete="off">
                   </div>
                   <div class="mb-3">
-                    <label for="password">Password</label>
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" autocomplete="off">
-                  </div>
-                  <div class="mb-3">
-                    <label for="confirmpassword">Confirm Password</label>
-                    <input id="confirmpassword" name="confirmpassword" type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" aria-describedby="password-addon" autocomplete="off">
+                    <label for="course">Course</label>
+                    <select id="course" name="course" class="form-control" placeholder="Course" aria-label="course" aria-describedby="email-addon" autocomplete="off">
+                      <option value="BSIT">BSIT</option>
+                      <option value="BSBA">BSBA</option>
+                      <option value="BSCS">BSCS</option>
+                      <option value="ACT">ACT</option>
+                    </select>
                   </div>
                   <!-- <div class="form-check form-check-info text-left">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
@@ -198,7 +197,7 @@
                     </label>
                   </div> -->
                   <div class="text-center">
-                    <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Create</button>
+                    <button form="register-form" type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">Create</button>
                   </div>
                   <!-- <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-dark font-weight-bolder">Sign in</a></p> -->
                 </form>
@@ -208,60 +207,6 @@
         </div>
       </div>
     </section>
-    <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-    <footer class="footer py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mb-4 mx-auto text-center">
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Company
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              About Us
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Team
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Products
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Blog
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Pricing
-            </a>
-          </div>
-          <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-dribbble"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-twitter"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-instagram"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-pinterest"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-github"></span>
-            </a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8 mx-auto text-center mt-1">
-            <p class="mb-0 text-secondary">
-              Copyright © <script>
-                document.write(new Date().getFullYear())
-              </script> Soft by Creative Tim.
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   </main>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
@@ -270,7 +215,7 @@
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../../js/jquery.min.js"></script>
   <script src="../../js/jquery.validate.min.js"></script>
-  <script src="../assets/js/student.js"></script>
+  <script src="../assets/js/add-student.js"></script>
   <script src="https://unpkg.com/@bitjson/qr-code@1.0.2/dist/qr-code.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
