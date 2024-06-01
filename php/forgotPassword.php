@@ -1,12 +1,6 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/Exception.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/PHPMailer.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/SMTP.php';
-
 include('config.php');
+include('mail/mailConfig.php');
 
 date_default_timezone_set("Asia/Taipei");
 
@@ -25,7 +19,7 @@ if(isset($_POST["email"]) && (!empty($_POST["email"])))
         $sel_query = "SELECT * FROM admin WHERE email='$email';";
         $results = mysqli_query($conn,$sel_query);
         $row = mysqli_num_rows($results);
-        if ($row=="")
+        if ($row == 0)
         {
             $error .= "<p>No user is registered with this email address!</p>";
         }
@@ -67,28 +61,12 @@ if(isset($_POST["email"]) && (!empty($_POST["email"])))
             $subject = "Password Recovery - ACLC Apalit";
             $emailTo = $email;
 
-            $mail = new PHPMailer;
-            $mail->isSMTP(); 
-            $mail->SMTPDebug = 0; // 0 = off (for production use) - 1 = client messages - 2 = client and server messages
-            $mail->Host = "smtp.gmail.com"; // use $mail->Host = gethostbyname('smtp.gmail.com'); // if your network does not support SMTP over IPv6
-            $mail->Port = 587; // TLS only
-            $mail->SMTPSecure = 'tls'; // ssl is deprecated
-            $mail->SMTPAuth = true;
-            $mail->Username = 'aclcapalitlabs@gmail.com'; // email
-            $mail->Password = 'wgsk xipl nkgq noho'; // password
-            $mail->setFrom('aclcapalitlabs@gmail.com', 'ACLC Apalit Labs'); // From email and name
             $mail->addAddress($emailTo, ''); // to email and name
             $mail->Subject = $subject;
             $mail->msgHTML($body); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
             $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
             // $mail->addAttachment('images/phpmailer_mini.png'); //Attach an image file
-            $mail->SMTPOptions = array(
-                                'ssl' => array(
-                                    'verify_peer' => false,
-                                    'verify_peer_name' => false,
-                                    'allow_self_signed' => true
-                                )
-                            );
+            
             if(!$mail->send()){
                 echo "Mailer Error: " . $mail->ErrorInfo;
             }else{
