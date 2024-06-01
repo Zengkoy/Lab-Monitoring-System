@@ -18,9 +18,16 @@ if($_POST)
     $password = trim(stripslashes($_POST['password']));
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
+    $sel_query = "SELECT * FROM admin WHERE email='$email';";
+    $results = mysqli_query($conn,$sel_query);
+    $row = mysqli_num_rows($results);
     if(!$email)
     {
       echo "Invalid Email";
+    }
+    else if($row != 0)
+    {
+      echo "Email already in use.";
     }
     else
     {
