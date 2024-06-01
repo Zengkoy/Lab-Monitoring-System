@@ -110,7 +110,7 @@ function form_submit() {
                         }
                     },
                     error: function() {
-                        fill_profile_info();
+                        fill_info();
                         $('#result').html("Something went wrong. Please try again.");
                         $("#result").show();
                         setTimeout(function() {$('#result').fadeOut();}, 3000);

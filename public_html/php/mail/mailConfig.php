@@ -1,9 +1,9 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/Exception.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/PHPMailer.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/php/mail/SMTP.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/public_html/php/mail/Exception.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/public_html/php/mail/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/lab_monitoring_system/public_html/php/mail/SMTP.php';
 
 $mail = new PHPMailer;
 $mail->isSMTP(); 
