@@ -4,7 +4,7 @@ window.onload = function() {
 
         success: function(msg) {
             if(msg == "OK") {
-                generate_logs_table("");
+                list_subjects();
             }
             else {
                 window.location.replace('../');
@@ -16,18 +16,20 @@ window.onload = function() {
     });
 };
 
-function generate_logs_table(date, pc) {
+function generate_logs_table() {
     $.ajax({
         url: "../../php/listLogs.php",
         type: "POST",
         data: { 
             'lab': $("#lab-select").val(),
-            'date': date,
-            'pc': pc
+            'date': $("#date-select").val(),
+            'pc': $("#pc-select").val(),
+            'subject': $("#sub-select").val(),
+            'course': $("#course-select").val()
         },
 
         success: function(msg) {
-            $("#logsTable").load("../../php/logs.txt");
+            $("#logsTable").html(msg);
         },
         error: function(errorThrown){
             alert(errorThrown);
@@ -35,21 +37,40 @@ function generate_logs_table(date, pc) {
     });
 }
 
-var dateElement = $("#date-select");
-var pcElement = $("#pc-select");
+function list_subjects() {
+    $.ajax({
+        url: "../../php/listLogs.php",
+
+        success: function(msg) {
+            msg = JSON.parse(msg);
+            $("#sub-select").html(msg['subjects']);
+            $("#course-select").html(msg['courses']);
+            generate_logs_table();
+        },
+        error: function(errorThrown){
+            alert(errorThrown);
+        }
+    });
+}
 
 $("#lab-select").change(function() { 
-    generate_logs_table("", "");
-    dateElement.val("");
-    pcElement.val(""); 
+    $("#date-select").val("");
+    $("#pc-select").val(""); 
+    $("#sub-select").val("").change();
+    $("#course-select").val("").change();
+    generate_logs_table();
 });
-$("#date-select").change(function() { generate_logs_table(dateElement.val(), pcElement.val()); });
-$("#pc-select").change(function() { generate_logs_table(dateElement.val(), pcElement.val()); });
+$("#date-select").change(function() { generate_logs_table(); });
+$("#pc-select").change(function() { generate_logs_table(); });
+$("#sub-select").change(function() { generate_logs_table(); });
+$("#course-select").change(function() { generate_logs_table(); });
 
 $("#clear-date-button").click(function() { 
-    dateElement.val("");
-    pcElement.val("");
-    generate_logs_table("");
+    $("#date-select").val("");
+    $("#pc-select").val("");
+    $("#sub-select").val("").change();
+    $("#course-select").val("").change();
+    generate_logs_table();
 });
 
 var $loading = $("#loading").hide();

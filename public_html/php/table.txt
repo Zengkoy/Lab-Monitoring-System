@@ -54,4 +54,11 @@
                         <input data-report='49' data-computer='12' class='btn btn-warning btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td><td class='align-middle'>
                     <input data-report='49' data-computer='12' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
+                </td></tr><tr><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>Romero, Julia T.</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td><span class='text-secondary text-xs font-weight-bold'>1</span></td><td id='desc50' class='align-middle text-center'>
+            <div class='desc'>
+            <button onClick='show_description(this)' class='btn btn-link m-0 p-0 me-2' data-id='50'><i class='fa fa-eye'></i></button><span class='text-secondary text-xs font-weight-bold'>Broken Keyboard, </span>
+            </div></td><td class='align-middle text-center'><span class='text-secondary text-xs font-weight-bold'>2024-06-02</span></td><td class='align-middle text-center'><span class='badge badge-sm bg-gradient-success'>resolved</span></td><td class='d-flex justify-content-center'>
+                <input data-report='50' data-computer='11' class='btn btn-secondary btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='unresolve(this)' value='Unresolve'/>
+                </td><td class='align-middle'>
+                    <input data-report='50' data-computer='11' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td></tr>
