@@ -52,15 +52,22 @@ if ($_POST and !$_FILES)
   $qrResult = "<img src='qrcode.png' />";
 
   $select = "SELECT * FROM students WHERE student_id = '$usn';";
-  $result = mysqli_query($conn, $select);
+  $usedUSN = mysqli_query($conn, $select);
+  
+  $select = "SELECT email FROM students WHERE email='$email' AND student_id!='$usn';";
+  $usedEmail = mysqli_query($conn, $select);
 
-  if ((mysqli_num_rows($result) > 0)) 
+  if ((mysqli_num_rows($usedUSN) > 0)) 
   {
     echo "USN already Registered.";
   } 
   else if(!$email)
   {
     echo "Invalid email address.";
+  }
+  else if(mysqli_num_rows($usedEmail) > 0)
+  {
+    echo "Email already in use.";
   }
   else 
   {
@@ -118,6 +125,9 @@ else if ($_FILES)
       $select = "SELECT * FROM students WHERE student_id = '$usn';";
       $result = mysqli_query($conn, $select);
 
+      $select = "SELECT email FROM students WHERE email='$email' AND student_id!='$usn';";
+      $usedEmail = mysqli_query($conn, $select);
+
       if ((mysqli_num_rows($result) > 0)) 
       {
         $error .= "USN already Registered: $usn <br>";
@@ -126,6 +136,11 @@ else if ($_FILES)
       else if (!$email) 
       {
         $error .= "Invalid email address for usn: $usn <br>";
+        $failCount++;
+      }
+      else if(mysqli_num_rows($usedEmail) > 0)
+      {
+        $error .= "Email already in use for usn: $usn";
         $failCount++;
       }
       else 
