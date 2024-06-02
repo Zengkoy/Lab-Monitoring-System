@@ -60,7 +60,7 @@
             }
 
             $name = $row[0]['name'];
-            $course = $row[0]['course/year'];
+            $course = $row[0]['course'];
 
             $table .= "<tr>
             <td>
