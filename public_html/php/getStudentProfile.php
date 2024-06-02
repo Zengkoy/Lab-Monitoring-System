@@ -5,13 +5,15 @@
     $data = array(
         'result' => '',
         'student' => '',
+        'email' => '',
         'reports' => '',
     );
 
     $usn = $_SESSION['student_id'];
-    $query = mysqli_query($conn, "SELECT name FROM students WHERE student_id = $usn;");
+    $query = mysqli_query($conn, "SELECT name, email FROM students WHERE student_id = $usn;");
     $student = mysqli_fetch_assoc($query);
     $data['student'] = $student['name'];
+    $data['email'] = $student['email'];
 
     $query = mysqli_query($conn,"SELECT * FROM reports WHERE submitted_by = $usn;");
     $row = array();

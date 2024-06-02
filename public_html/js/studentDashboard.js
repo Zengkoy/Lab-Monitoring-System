@@ -6,6 +6,7 @@ window.onload = function() {
             if(msg == "OK") {
                 fill_info();
                 form_submit();
+                edit_profile();
                 console.log("#internetCheck:checked")
             }
             else {
@@ -27,6 +28,7 @@ function fill_info() {
             msg = JSON.parse(msg);
             if(msg['result'] == "OK") {
                 $("#name").html(msg['student']);
+                $("#formEmail").val(msg['email']);
                 $("#report-list").html(msg['reports']);
             }
         },
@@ -56,6 +58,7 @@ function form_submit() {
             messages: 
             {
                 pc: "Please enter PC Number",
+                usability: "Please confirm if the computer is usable",
                 issueCheck: "Please choose an option or write description"
             },
             errorElement: "div",
@@ -101,10 +104,11 @@ function form_submit() {
                             $("#result").html("<div class='alert alert-success py-0'>Success!</div>");
                             $("#result").show();
                             setTimeout(function() {$('#result').fadeOut();}, 3000);
+                            fill_info();
                         } 
                         else {
                             console.log(msg)
-                            $("#result").html("<div class='alert alert-danger py-0'>"+ msg + "</div>");
+                            $("#result").html("<div class='alert alert-danger text-white py-0'>"+ msg + "</div>");
                             $("#result").show();
                             setTimeout(function() {$('#result').fadeOut();}, 3000);
                         }
@@ -122,6 +126,62 @@ function form_submit() {
     }
 }
 
+function edit_profile() {
+    if ($('#edit-form').length > 0 ) {
+        $( "#edit-form" ).validate( {
+            rules: {
+                formEmail: "required",
+                formCurrentPassword: "required"
+            },
+            messages: 
+            {
+                formEmail: "Please enter Email",
+                formCurrentPassword: "Please Enter Current Password"
+            },
+            errorElement: "div",
+            errorLabelContainer: "error",
+            errorPlacement: function(error, element) {
+                if($(element).attr("name") == "issueCheck"){
+                    error.insertAfter($(element).parent().parent().next());
+                }
+                else {
+                    error.insertBefore(element);
+                }
+            },
+
+            /* submit via ajax */
+            
+            submitHandler: function(form) {
+                $.ajax({   	
+                    type: "POST",
+                    url: "../php/editStudentProfile.php",
+                    data: $(form).serialize(),
+
+                    success: function(msg) {
+                        if (msg == 'OK') {
+                            $("#edit-result").html("<div class='alert alert-success py-0'>Success!</div>");
+                            $("#edit-result").show();
+                            setTimeout(function() {$('#edit-result').fadeOut();}, 3000);
+                        } 
+                        else {
+                            console.log(msg)
+                            $("#edit-result").html("<div class='alert alert-danger text-white py-0'>"+ msg + "</div>");
+                            $("#edit-result").show();
+                            setTimeout(function() {$('#edit-result').fadeOut();}, 3000);
+                        }
+                    },
+                    error: function() {
+                        fill_info();
+                        $('#edit-result').html("Something went wrong. Please try again.");
+                        $("#edit-result").show();
+                        setTimeout(function() {$('#edit-result').fadeOut();}, 3000);
+                    }
+                });
+            } // end submitHandler
+
+        });
+    }
+}
 
 function is_required(id) {
     var required = true;

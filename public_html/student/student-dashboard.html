@@ -77,7 +77,7 @@
             <div class="card-header pb-3 p-3">
               <h6 class="mb-0">Report an Issue</h6>
             </div>
-            <div id="loading" class="spinner-border text-primary" role="status">
+            <div id="loading" class="spinner-border text-primary fixed-top" role="status">
               <span class="sr-only">Loading...</span>
             </div>
             <div id="result" class="text-center m-auto w-50">
@@ -148,6 +148,37 @@
               <ul class="list-group" id="report-list">
                 
               </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-8 mt-4">
+          <div class="card bg-gray-200 mb-4">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-1">Edit Profile</h6>
+            </div>
+            <div class="card-body p-3">
+              <div id="edit-result" class="text-center m-auto w-50"></div>
+              <form method="post" id="edit-form">
+                <div class="d-flex">
+                  <div class="form-group w-40">
+                    <label for="formEmail">Email<span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" id="formEmail" name="formEmail" placeholder="Email">
+                  </div>
+                  <div class="form-group ms-5">
+                    <label for="formCurrentPassword">Current Password<span style="color: red;">*</span></label>
+                    <input type="password" class="form-control" id="formCurrentPassword" name="formCurrentPassword" placeholder="Current password">
+
+                    <label for="formNewPassword">New Password</label>
+                    <input type="password" class="form-control" id="formNewPassword" name="formNewPassword" placeholder="New password">
+
+                    <label for="formConfirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="formConfirmPassword" name="formConfirmPassword" placeholder="Confirm password">
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

@@ -19,7 +19,7 @@ function send_mail($name, $password, $emailTo, $mail)
   $body .= "<p>ACLC Apalit Laboratories</p>";
 
   $mail->addAddress($emailTo, $name); // to email and name
-  $mail->Subject = 'PHPMailer GMail SMTP test';
+  $mail->Subject = 'Account Activated - ACLC Apalit Laboratories';
   $mail->AddEmbeddedImage("qrcode.png", "my-attach", "qr-code");
   $mail->msgHTML($body);
   $mail->AltBody = 'HTML messaging not supported';
