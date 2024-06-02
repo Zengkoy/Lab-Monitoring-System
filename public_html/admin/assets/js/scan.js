@@ -108,3 +108,9 @@ let html5QrcodeScanner = new Html5QrcodeScanner(
 { fps: 10, qrbox: {width: 300, height: 300} },
 /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+var $loading = $("#loading").hide();
+  
+$(document)
+    .ajaxStart(function() { $loading.show(); })
+    .ajaxStop(function() { $loading.hide(); });
