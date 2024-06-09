@@ -4,6 +4,7 @@ window.onload = function() {
 
         success: function(msg) {
             if(msg == "OK") {
+                generate_labs_options();
                 generate_computer_table();
             }
             else {
@@ -20,6 +21,20 @@ function show_reports() {
     $('#related-reports').show();
 }
 
+function generate_labs_options() {
+    $.ajax({
+        url: "../../php/generateLabOpt.php",
+
+        success: function(msg) {
+            $("#lab-select-dd").html(msg);
+            $("#lab").html(msg);
+        },
+        error: function(errorThrown) {
+            alert(errorThrown);
+        }
+    })
+}
+
 function generate_computer_table() {
     $.ajax({
         type: "POST",
@@ -27,7 +42,7 @@ function generate_computer_table() {
         data: $("#lab-select").serialize(),
 
         success: function(msg) {
-            $("#computer-list").load("../../php/comp-table.txt");
+            $("#computer-list").html(msg);
         },
         error: function(errorThrown){
             alert(errorThrown);

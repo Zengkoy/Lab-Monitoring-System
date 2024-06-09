@@ -5,6 +5,7 @@ window.onload = function() {
         success: function(msg) {
             if(msg == "OK") {
                 fill_info();
+                generate_labs_options();
                 form_submit();
                 edit_profile();
                 console.log("#internetCheck:checked")
@@ -36,6 +37,19 @@ function fill_info() {
             alert(errorThrown);
         }
     });
+}
+
+function generate_labs_options() {
+    $.ajax({
+        url: "../php/generateLabOpt.php",
+
+        success: function(msg) {
+            $("#lab").html(msg);
+        },
+        error: function(errorThrown) {
+            alert(errorThrown);
+        }
+    })
 }
 
 function form_submit() {

@@ -4,6 +4,7 @@ window.onload = function() {
 
         success: function(msg) {
             if(msg == "OK") {
+                generate_labs_options();
                 listSubjects();
             }
             else {
@@ -15,6 +16,19 @@ window.onload = function() {
         }
     });
 };
+
+function generate_labs_options() {
+    $.ajax({
+        url: "../../php/generateLabOpt.php",
+
+        success: function(msg) {
+            $("#lab").html(msg);
+        },
+        error: function(errorThrown) {
+            alert(errorThrown);
+        }
+    })
+}
 
 function listSubjects() {
     

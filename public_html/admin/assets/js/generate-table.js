@@ -4,6 +4,7 @@ window.onload = function() {
 
         success: function(msg) {
             if(msg == "OK") {
+                generate_labs_options();
                 generate_report_table();
             }
             else {
@@ -15,6 +16,19 @@ window.onload = function() {
         }
     });
 };
+
+function generate_labs_options() {
+    $.ajax({
+        url: "../../php/generateLabOpt.php",
+
+        success: function(msg) {
+            $("#lab-select").html(msg);
+        },
+        error: function(errorThrown) {
+            alert(errorThrown);
+        }
+    })
+}
 
 function generate_report_table() {
     $.ajax({
