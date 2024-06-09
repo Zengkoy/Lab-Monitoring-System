@@ -27,7 +27,16 @@
         {
             $reporter = $r['submitted_by'];
             $query = mysqli_query($conn,"SELECT name FROM students WHERE student_id = '$reporter';");
-            $reporter = mysqli_fetch_assoc($query)['name'];
+            $student = mysqli_fetch_assoc($query);
+
+            if(empty($student))
+            {
+                $reporter = "Student Removed<br>USN:$reporter";
+            }
+            else
+            {
+                $reporter = $student['name'];
+            }
 
             $reportId = $r['report_id'];
             $computer_id = $r['computer_id'];

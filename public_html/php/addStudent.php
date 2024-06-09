@@ -72,7 +72,8 @@ if ($_POST and !$_FILES)
   else 
   {
     $query = "INSERT INTO students VALUES('$usn', '$hash', '$name', '$course', '$email');";
-    if (mysqli_query($conn, $query)) 
+    $delete = "DELETE FROM students_archive WHERE student_id = '$usn';";
+    if (mysqli_query($conn, $query) and mysqli_query($conn, $delete)) 
     {
       $sent = send_mail($name, $password, $email, $mail);
       if($sent)
@@ -146,7 +147,8 @@ else if ($_FILES)
       else 
       {
         $query = "INSERT INTO students VALUES('$usn', '$hash', '$name', '$course', '$email');";
-        if (!mysqli_query($conn, $query)) 
+        $delete = "DELETE FROM students_archive WHERE student_id = '$usn';";
+        if (!mysqli_query($conn, $query) or !mysqli_query($conn, $delete)) 
         {
           $error .= mysqli_error($conn)." for USN: $usn<br>";
           $failCount++;
@@ -175,7 +177,7 @@ else if ($_FILES)
   }
   else
   {
-    $error .= "Failed entries: $failCount.";
+    $error .= "Failed entries: $failCount.<br>";
     $error .= "Successfuly Added $successCount entries.<br>";
     echo $error;
   }

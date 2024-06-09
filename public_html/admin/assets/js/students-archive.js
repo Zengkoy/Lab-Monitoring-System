@@ -18,7 +18,7 @@ window.onload = function() {
 
 function list_subjects() {
     $.ajax({
-        url: "../../php/students.php",
+        url: "../../php/students-archive.php",
 
         success: function(msg) {
             $("#course").html(msg);
@@ -33,7 +33,7 @@ function list_subjects() {
 function generate_students_table() {
     $.ajax({
         type: "POST",
-        url: "../../php/students.php",
+        url: "../../php/students-archive.php",
         data: {
             'course': $("#course").val(),
             'search': $("#search").val()
@@ -48,11 +48,38 @@ function generate_students_table() {
     });
 }
 
+function restore_student(button) {
+    if(confirm("Restore Student to Active Database?")) {
+        var values = { 
+            'student': button.dataset.student,
+            'action': 'restore'
+        };
+        $.ajax({
+            url: "../../php/students-archive.php",
+            type: "POST",
+            data: values,
+
+            success: function(msg) {
+                if(msg == "OK") {
+                    generate_students_table();
+                }
+                else
+                {
+                    console.log(msg);
+                }
+            }
+        });
+    }
+}
+
 function remove_student(button) {
     if(confirm("Remove Student from Database?")) {
-        var values = { 'student': button.dataset.student };
+        var values = { 
+            'student': button.dataset.student,
+            'action': 'remove'
+        };
         $.ajax({
-            url: "../../php/students.php",
+            url: "../../php/students-archive.php",
             type: "POST",
             data: values,
 

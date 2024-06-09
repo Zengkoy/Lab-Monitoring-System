@@ -7,7 +7,7 @@
         $course = $_POST['course'];
         $search = $_POST['search'];
 
-        $query = "SELECT * FROM students";
+        $query = "SELECT * FROM students_archive";
         if($course != "" or $search != "") 
         {
             $query .= " WHERE";
@@ -46,7 +46,8 @@
                 $table .= "<span class='text-secondary text-xs font-weight-bold'>$email</span></td>";
 
                 $table .= "<td class='align-middle'>
-                <input data-student='$usn' onClick='remove_student(this)' class='btn btn-danger btn-sm font-weight-normal mb-0 me-3 px-2' type='button' value='Remove'/>
+                        <input data-student='$usn' onClick='restore_student(this)' class='btn btn-success btn-sm font-weight-normal mb-0 px-2' type='button' value='Restore'/>
+                        <input data-student='$usn' onClick='remove_student(this)' class='btn btn-danger btn-sm font-weight-normal mb-0 me-3 px-2' type='button' value='Delete'/>
                     </td>";
                 
                 $table .= "</tr>";
@@ -55,38 +56,49 @@
         }
         else
         {
-            echo "No Students Registered.";
+            echo "No Students Archived.";
         }
     }
-    else if(isset($_POST['student']))
+    else if(isset($_POST['action']))
     {
-        //delete Student
+        //Button Click on student
         $usn = $_POST['student'];
 
-        $query = mysqli_query($conn, "SELECT * FROM students WHERE student_id = $usn;");
-        $student = mysqli_fetch_assoc($query);
-
-        $name = $student['name'];
-        $email = $student['email'];
-        $course = $student['course'];
-        $password = $student['password'];
-
-        $insert = "INSERT INTO students_archive VALUES ('$usn', '$name', '$email', '$course', '$password');";
-        if(mysqli_query($conn, $insert))
+        if($_POST['action'] == "restore")
         {
-            $query = "DELETE FROM students WHERE student_id=$usn;";
+            //restore Student to active students database
+            $query = mysqli_query($conn, "SELECT * FROM students_archive WHERE student_id = $usn;");
+            $student = mysqli_fetch_assoc($query);
+
+            $name = $student['name'];
+            $email = $student['email'];
+            $course = $student['course'];
+            $password = $student['password'];
+
+            $insert = "INSERT INTO students VALUES ('$usn', '$password', '$name', '$course', '$email');";
+            if(mysqli_query($conn, $insert))
+            {
+                $query = "DELETE FROM students_archive WHERE student_id=$usn;";
+                if(mysqli_query($conn, $query)){ echo "OK"; }
+                else { echo mysqli_error($conn); }
+            }
+            else
+            {
+                echo mysqli_error($conn);
+            }
+        }
+        else if($_POST['action'] == "remove")
+        {
+            //delete student entirely
+            $query = "DELETE FROM students_archive WHERE student_id=$usn;";
             if(mysqli_query($conn, $query)){ echo "OK"; }
             else { echo mysqli_error($conn); }
-        }
-        else
-        {
-            echo mysqli_error($conn);
         }
     }
     else
     {
         //generate courses dropdown input
-        $query = mysqli_query($conn, "SELECT course FROM students GROUP BY course;");
+        $query = mysqli_query($conn, "SELECT course FROM students_archive GROUP BY course;");
         $row = array();
 
         while($r = mysqli_fetch_assoc($query))

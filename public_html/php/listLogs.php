@@ -62,8 +62,20 @@
                   $row[] = $r;
               }
 
-              $name = $row[0]['name'];
-              $course = $row[0]['course'];
+
+              $name = "";
+              $course = "";
+
+              if(empty($row))
+              {
+                $name = "Student Removed<br>USN: $usn";
+                $course = "Unknown";
+              }
+              else
+              {
+                $name = $row[0]['name'];
+                $course = $row[0]['course'];
+              }
 
               $table .= "<tr>
               <td>
