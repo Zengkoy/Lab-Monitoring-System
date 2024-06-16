@@ -6,7 +6,6 @@
         //add or remove lab
         $lab = $_POST['lab'];
         $query = "";
-        $delete = "";
         $select = mysqli_query($conn, "SELECT * FROM labs WHERE lab=$lab;");
 
         $error = "";
@@ -24,16 +23,17 @@
         else if($_POST['action'] == "remove")
         {
             $query = "DELETE FROM labs WHERE lab = '$lab';";
-            $delete = "DELETE FROM computers WHERE computer_id RLIKE '^$lab';";
         }
 
         if($error == "")
         {
             if(mysqli_query($conn, $query))
             {
-                if($delete != "")
+                if($_POST['action'] == "remove")
                 {
-                    if(mysqli_query($conn, $delete)) { echo "OK"; }
+                    $deleteComp = mysqli_query($conn, "DELETE FROM computers WHERE computer_id RLIKE '^$lab';");
+                    $deleteRep = mysqli_query($conn, "DELETE FROM reports WHERE computer_id RLIKE '^$lab';");
+                    if($deleteComp and $deleteRep) { echo "OK"; }
                     else { echo mysqli_error($conn); }
                 }
                 else { echo "OK"; }
