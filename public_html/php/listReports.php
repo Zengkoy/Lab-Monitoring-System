@@ -1,18 +1,33 @@
 <?php
     @include 'config.php';
 
+    date_default_timezone_set("Asia/Taipei");
+
     $lab = $_POST['lab'];
     $status = $_POST['status'];
+    $type = $_POST['type'];
+    $recentFilter = $_POST['recent'];
+    $specDate = $_POST['spec-date'];
 
-    $query = "";
-    if($status != "") 
+    $query = "SELECT * FROM reports WHERE computer_id RLIKE '^$lab' ";
+    if($status != "") { $query .= "AND status = '$status' "; }
+    if($type != ""){ $query .= "AND prob_type = '$type' "; }
+    if($recentFilter != "")
     {
-        $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab' AND status = '$status';");
+        $pastDate = "";
+        if($recentFilter == "past week"){ $pastDate = date("Y-m-d", strtotime("-1 week")); }
+        else if($recentFilter == "past month"){ $pastDate = date("Y-m-d", strtotime("-1 month")); }
+        else if($recentFilter == "past year"){ $pastDate = date("Y-m-d", strtotime("-1 year")); }
+        $query .= "AND DATE_FORMAT(date, '%Y-%m-%d') > '$pastDate' ";
     }
-    else
+    if($specDate != "")
     {
-        $query = mysqli_query($conn,"SELECT * FROM reports WHERE computer_id RLIKE '^$lab';");
+        $query .= "AND DATE_FORMAT(date, '%Y-%m') = '$specDate' ";
     }
+    $query .= "ORDER BY date DESC;";
+    echo $query;
+    $query = mysqli_query($conn, $query);
+
     $row = array();
     $table = "";
 
@@ -43,6 +58,7 @@
             $lab = substr($computer_id, 0, 1);
             $pc = substr($computer_id, 1);
             $desc = $r['issue'];
+            $type = $r['prob_type'];
             $date = $r['date'];
             $status = $r['status'];
 
@@ -60,6 +76,8 @@
             $table .= "<span class='text-secondary text-xs font-weight-bold'>$desc</span>
             </div></td>";
 
+            $table .= "<td><span class='text-secondary text-xs font-weight-bold'>$type</span></td>";
+
             $table .= "<td class='align-middle text-center'>";
             $table .= "<span class='text-secondary text-xs font-weight-bold'>$date</span></td>";
 
@@ -67,7 +85,7 @@
             {
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-secondary'>$status</span></td>";
-                $table .= "<td class='d-flex justify-content-center'>
+                $table .= "<td class='justify-content-center'>
                         <input data-report='$reportId' data-computer='$computer_id' class='btn btn-warning btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='resolve(this)' value='Resolve'/>
                     </td>";
             }
@@ -75,12 +93,12 @@
             {
                 $table .= "<td class='align-middle text-center'>";
                 $table .= "<span class='badge badge-sm bg-gradient-success'>$status</span></td>";
-                $table .= "<td class='d-flex justify-content-center'>
-                <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 p-1 py-2 w-80' type='button' onclick='unresolve(this)' value='Unresolve'/>
+                $table .= "<td class='justify-content-center'>
+                <input data-report='$reportId' data-computer='$computer_id' class='btn btn-secondary btn-sm mb-0 p-1 py-2' type='button' onclick='unresolve(this)' value='Unresolve'/>
                 </td>";
             }
             $table .= "<td class='align-middle'>
-                    <input data-report='$reportId' data-computer='$computer_id' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3' type='button' onclick='delete_report(this)' value='Delete'/>
+                    <input data-report='$reportId' data-computer='$computer_id' class='btn btn-link btn-sm text-danger font-weight-normal mb-0 me-3 px-1' type='button' onclick='delete_report(this)' value='Delete'/>
                 </td>";
             
             $table .= "</tr>";

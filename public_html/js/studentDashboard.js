@@ -60,29 +60,32 @@ function form_submit() {
                 usability: "required",
                 issueCheck: { 
                     required: function() {
-                        return is_required("checkbox");
+                        return is_required();
                     }
                 },
-                issue: { 
-                    required: function() {
-                        return is_required("issue");
-                    }
-                },
+                hardwareName: { required: "#hardwareCheck:checked" },
+                softwareName: { required: "#softwareCheck:checked" }
             },
             messages: 
             {
                 pc: "Please enter PC Number",
                 usability: "Please confirm if the computer is usable",
-                issueCheck: "Please choose an option or write description"
+                issueCheck: "Please choose an option",
+                hardwareName: "Enter broken hardware",
+                softwareName: "Enter name of program or functionality"
             },
             errorElement: "div",
             errorLabelContainer: "error",
+            errorClass: "text-sm text-danger",
             errorPlacement: function(error, element) {
-                if($(element).attr("name") == "issueCheck"){
-                    error.insertAfter($(element).parent().parent().next());
+                if($(element).attr("name") == "pc"){
+                    error.insertBefore($(element));
+                }
+                else if($(element).attr("name") == "issueCheck"){
+                    error.insertAfter($(element).parent().parent().next())
                 }
                 else {
-                    error.insertBefore(element);
+                    error.insertAfter($(element).parent());
                 }
             },
 
@@ -153,8 +156,9 @@ function edit_profile() {
                 formCurrentPassword: "Please Enter Current Password"
             },
             errorElement: "div",
-            errorLabelContainer: "error",
+            errorClass: "text-sm text-danger", 
             errorPlacement: function(error, element) {
+                error.addClass("text-sm");
                 if($(element).attr("name") == "issueCheck"){
                     error.insertAfter($(element).parent().parent().next());
                 }
@@ -197,11 +201,11 @@ function edit_profile() {
     }
 }
 
-function is_required(id) {
+function is_required() {
     var required = true;
     var boxes = $("input[name=issueCheck]:checked");
 
-    if((boxes.length > 0 && id == "issue") || $("#issue").val() != "") {
+    if((boxes.length > 0) || $("#softwareCheck").is(":checked") || $("#hardwareCheck").is(":checked")) {
         required = false;
     }
     console.log(required);

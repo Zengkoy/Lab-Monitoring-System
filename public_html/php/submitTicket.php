@@ -15,9 +15,33 @@ if($_POST)
   $computer_id = $lab . $pc;
   $usability = $form['usability'];
   $issueCheck = $_POST['checks'];
+  $hardwareCheck = "";
+  $hardwareName = "";
+  $softwareCheck = "";
+  $softwareName = "";
   $issue = $form['issue'];
+  $type = "";
   $date = date("Y-m-d");
 
+  if($issueCheck != "")
+  {
+    $type = "hardware";
+  }
+  
+  if(isset($form['hardwareCheck']))
+  {
+    $type = "hardware";
+    $hardwareCheck = $form['hardwareCheck'];
+    $hardwareName = $form['hardwareName'].", ";
+  }
+
+  if(isset($form['softwareCheck']))
+  {
+    if($type != ""){ $type = "both"; }
+    else { $type = "software"; }
+    $softwareCheck = $form['softwareCheck'];
+    $softwareName = $form['softwareName'].", ";
+  }
 
   $computer_id = $lab . $pc;
 
@@ -42,7 +66,9 @@ if($_POST)
     }
     else 
     { 
-      $query = "INSERT INTO reports(submitted_by, computer_id, issue, status, date) VALUES('$reporter', '$computer_id', '$issueCheck$issue', 'pending', '$date');";
+      $query = "INSERT INTO reports(submitted_by, computer_id, issue, prob_type, status, date) 
+      VALUES('$reporter', '$computer_id', '$issueCheck$softwareCheck$softwareName$hardwareCheck$hardwareName$issue', 
+      '$type', 'pending', '$date');";
       if (!mysqli_query($conn, $query)) { echo mysqli_error($conn); }
       else 
       {
@@ -65,7 +91,8 @@ if($_POST)
           $body .= "<p>Submitted By: $reporter</p>";
           $body .= "<p>Laboratory: $lab</p>";
           $body .= "<p>PC Number: $pc</p>";
-          $body .= "<p>Issue(s): $issueCheck$issue</p>";
+          $body .= "<p>Issue(s): $issueCheck$hardwareCheck$hardwareName$softwareCheck$softwareName</p>";
+          $body .= "<p>Description: $issue</p>";
           $body .= "<p>----------------------------------------------------</p>";
           $body .= "<p>ACLC Apalit Lab</p>";
           $subject = "New Report - ACLC Apalit Labs";

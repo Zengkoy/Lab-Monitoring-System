@@ -36,10 +36,14 @@ function generate_report_table() {
         type: "POST",
         data: { 
             'lab': $("#lab-select").val(),
-            'status': $("#status-select").val()
+            'status': $("#status-select").val(),
+            'type': $("#type-select").val(),
+            'recent': $("#recent-select").val(),
+            'spec-date': $("#month-select").val()
          },
 
-        success: function() {
+        success: function(msg) {
+            console.log(msg);
             $("#reportsTable").load("../../php/table.txt");
         },
         error: function(errorThrown){
@@ -145,6 +149,23 @@ function show_description(button) {
 $("#print-button").click(function() { window.print(); });
 $("#lab-select").change(function() { generate_report_table(); });
 $("#status-select").change(function() { generate_report_table(); });
+$("#type-select").change(function() { generate_report_table(); });
+
+var isChanged = 0;
+$("#recent-select").change(function() {
+    if($("#month-select").val() != "" && isChanged != 1) {
+        $("#month-select").val("").change();
+    }
+    isChanged = 1;
+    generate_report_table(); 
+});
+$("#month-select").change(function() { 
+    if($("#recent-select").val() != "" && isChanged != 2) {
+        $("#recent-select").val("").change();
+    }
+    isChanged = 2;
+    generate_report_table();
+ });
 
 var $loading = $("#loading").hide();
 

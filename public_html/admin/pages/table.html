@@ -435,7 +435,7 @@
                 Print
               </button>
             </div>
-            <div class="d-flex" style="background-color: rgb(22, 198, 221);">
+            <div class="d-flex pb-2" style="background-color: rgb(22, 198, 221);">
               <select class="form-control-sm w-8 p-1 ms-3 m-1" name="lab-select" id="lab-select">
                 <option value="1">Lab 1</option>
                 <option value="2">Lab 2</option>
@@ -445,6 +445,20 @@
                 <option value="pending">Pending</option>
                 <option value="resolved">Resolved</option>
               </select>
+              <select class="form-control-sm w-9 p-1 ms-3 m-1" name="type-select" id="type-select">
+                <option value="">Type: All</option>
+                <option value="software">Software</option>
+                <option value="hardware">Hardware</option>
+                <option value="both">Both</option>
+              </select>
+              <select class="form-control-sm w-9 p-1 ms-3 m-1" name="recent-select" id="recent-select">
+                <option value="">All Time</option>
+                <option value="past week">Past Week</option>
+                <option value="past month">Past Month</option>
+                <option value="past year">Past Year</option>
+              </select>
+              <label for="month-select" class="mt-2">Filter by Month: </label>
+              <input type="month" name="month-select" id="month-select" class="form-control-sm py-0 w-15">
               <div id="loading" class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
               </div>
@@ -458,6 +472,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lab</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">PC</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Issue</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Submitted</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-secondary opacity-7" colspan="2"></th>
