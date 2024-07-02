@@ -7,7 +7,9 @@
 
 if($_POST) 
 {
-  $reporter = $_SESSION['student_id'];
+  $reporter = "";
+  if(isset($_POST['is-admin'])){ $reporter = "admin".$_SESSION['id']; }
+  else { $reporter = $_SESSION['student_id']; }
   
   $form = $_POST['form'];
   $lab = $form['lab'];

@@ -41,16 +41,31 @@
         foreach($row as $r)
         {
             $reporter = $r['submitted_by'];
-            $query = mysqli_query($conn,"SELECT name FROM students WHERE student_id = '$reporter';");
-            $student = mysqli_fetch_assoc($query);
+            $isAdmin = false;
 
-            if(empty($student))
+            $query = "";
+            if(substr($reporter, 0, 5) == "admin")
+            {
+                $isAdmin = true;
+                $admin = substr($reporter, 5);
+                $query = mysqli_query($conn,"SELECT username FROM admin WHERE admin_id = '$admin';");
+                $reporter = "Administrator: ";
+            }
+            else
+            {
+                $query = mysqli_query($conn,"SELECT name FROM students WHERE student_id = '$reporter';");
+            }
+
+            $user = mysqli_fetch_assoc($query);
+
+            if(empty($user))
             {
                 $reporter = "Student Removed<br>USN:$reporter";
             }
             else
             {
-                $reporter = $student['name'];
+                if($isAdmin){ $reporter .= $user[array_keys($user)[0]]; }
+                else { $reporter = $user[array_keys($user)[0]]; }
             }
 
             $reportId = $r['report_id'];

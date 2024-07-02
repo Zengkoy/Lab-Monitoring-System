@@ -70,7 +70,7 @@
     
     if(!empty($student) and $student['password'] == $password)
     {
-        if(empty($assignment) and empty($backupAssignment) and count($available_pc) > 0)
+        if(empty($assignment) and count($available_pc) > 0)
         {
             //if NO Assigned PC
             $assigned_pc = $available_pc[0]['computer_id'];
@@ -108,16 +108,21 @@
             if(mysqli_query($conn, $query)) { echo "OK". $assigned_pc; }
             else { echo mysqli_error($conn); }
         }
-        else if(!empty($assignment) and !$assignmentAvailable and empty($backupAssignment) and !empty($available_pc))
+        else if(!empty($assignment) and !$assignmentAvailable and (empty($backupAssignment) or !$backupAssignAvail) and !empty($available_pc))
         {
-            //if Assigned PC is NOT functional, there is no backup assigned, and there are extra pc Available
+            //if Assigned PC is NOT functional, there is no backup pc or backup pc is broken, and there are extra pc Available
             $assigned_pc = $available_pc[0]['computer_id'];
+            $delQuery = "DELETE FROM backup_assignment WHERE student_id = '$usn' AND subject = '$subject' AND computer_id RLIKE '^$lab';";
             $query = "INSERT INTO backup_assignment (student_id, subject, computer_id) VALUES ('$usn', '$subject', '$assigned_pc');";
-            if(mysqli_query($conn, $query))
+            if(mysqli_query($conn, $delQuery) and mysqli_query($conn, $query))
             {
                 $query = "INSERT INTO logs (computer_id, student_id, subject, date) VALUES ('$assigned_pc', '$usn', '$subject', '$date');";
                 if(mysqli_query($conn, $query)) { echo "OK". $assigned_pc; }
                 else { echo mysqli_error($conn); }
+            }
+            else 
+            {
+                echo mysqli_error($conn);
             }
         }
         else

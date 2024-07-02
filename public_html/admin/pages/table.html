@@ -430,10 +430,15 @@
             <div id="error"></div>
             <div class="card-header d-flex justify-content-between pb-0" style="background-color: rgb(22, 198, 221);">
               <h6>Reports</h6>
-              <button id="print-button" class="btn btn-warning d-flex mh-25 py-1 ps-2 pe-1 ms-5">
-                <i class="fa fa-print me-1 m-auto"></i>
-                Print
-              </button>
+              <div class="col d-flex justify-content-end">
+                <a href="create-report.html" class="btn btn-secondary p-1 me-1">
+                  Create Report
+                </a>
+                <button id="print-button" class="btn btn-warning d-flex p-1">
+                  <i class="fa fa-print me-1 m-auto"></i>
+                  Print
+                </button>
+              </div>
             </div>
             <div class="d-flex pb-2" style="background-color: rgb(22, 198, 221);">
               <select class="form-control-sm w-8 p-1 ms-3 m-1" name="lab-select" id="lab-select">
